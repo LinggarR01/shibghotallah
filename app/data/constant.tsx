@@ -2,6 +2,7 @@ export interface Falsafah {
   id: number;
   title: string;
   description: string;
+  link: string;
   icon: React.ReactNode;
 }
 
@@ -18,9 +19,10 @@ export interface Article {
 export const falsafah: Falsafah[] = [
   {
     id: 1,
-    title: 'Pendidikan Terpadu',
+    title: 'Moto Pondok',
     description:
-      'Sistem kurikulum yang menyeimbangkan penguasaan ilmu agama (Tafaqquh Fiddin) dan sains modern.',
+      'Mencetak kader pemimpin umat yang memiliki kedalaman spiritual (Tafaqquh Fiddin) sekaligus keluasan wawasan sains modern.',
+    link: '/falsafah/moto',
     icon: (
       <svg
         className="w-7 h-7"
@@ -31,16 +33,17 @@ export const falsafah: Falsafah[] = [
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332-4.5 1.253"
         />
       </svg>
     ),
   },
   {
     id: 2,
-    title: 'Karakter & Kedisiplinan',
+    title: 'Sintesa',
     description:
-      'Membentuk santri yang mandiri, disiplin waktu, dan memiliki adab pergaulan islami 24 jam.',
+      'Integrasi totalitas kehidupan pesantren yang membentuk pribadi mandiri, beradab, dan disiplin dalam ekosistem pendidikan 24 jam.',
+    link: '/falsafah/sintesa',
     icon: (
       <svg
         className="w-7 h-7"
@@ -58,9 +61,10 @@ export const falsafah: Falsafah[] = [
   },
   {
     id: 3,
-    title: 'Inovasi Bahasa',
+    title: 'Panca Jiwa & Jangka',
     description:
-      'Kewajiban berbahasa resmi (Arab & Inggris) dalam percakapan sehari-hari untuk bekal global.',
+      'Internalisasi nilai karakter luhur sebagai ruh kehidupan dan rencana strategis demi kemajuan lembaga yang berkelanjutan.',
+    link: '/falsafah/panca-jiwa',
     icon: (
       <svg
         className="w-7 h-7"
@@ -110,3 +114,30 @@ export const articles: Article[] = [
     slug: 'prestasi-santri',
   },
 ];
+
+export const FOOTER_LINKS = {
+  about: [
+    { name: 'Falsafah & Moto', href: '/tentang/falsafah/moto' },
+    {
+      name: 'Sistem Pendidikan',
+      href: '/tentang/pendidikan/tujuan-pendidikan-dan-pengajaran',
+    },
+    { name: 'Profil Pimpinan', href: '/tentang/profil-pimpinan/pimpinan-1' },
+    { name: 'Sejarah Berdiri', href: '/sejarah/latar-belakang' },
+    { name: 'Struktur Organisasi', href: '/sejarah/struktur-organisasi' },
+  ],
+  info: [
+    { name: 'Pendaftaran Santri (KMI)', href: '/pendaftaran/pendaftaran-KMI' },
+    {
+      name: 'Info Seleksi & Ujian',
+      href: '/pendaftaran/seleksi-dan-wawancara',
+    },
+    { name: 'Berita & Pengumuman', href: '/berita' },
+    { name: 'Hubungi Kami', href: '/kontak' },
+  ],
+  contact: {
+    address: 'Jl. Pendidikan No. 123, Kota Islamic, Jawa Barat, Indonesia',
+    phone: '(021) 123-4567',
+    email: 'info@shibghotallah.edu',
+  },
+};

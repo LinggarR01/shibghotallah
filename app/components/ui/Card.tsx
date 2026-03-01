@@ -1,4 +1,5 @@
 import { Falsafah } from '@/app/data/constant';
+import Link from 'next/link';
 
 export default function Card({ content }: { content: Falsafah[] }) {
   return (
@@ -16,6 +17,23 @@ export default function Card({ content }: { content: Falsafah[] }) {
           <p className="text-gray-600 leading-relaxed text-sm">
             {item.description}
           </p>
+          <Link
+            href={item.link}
+            className="mt-4 text-emerald-700 font-bold hover:text-emerald-500 transition-colors flex items-center group text-sm md:text-base">
+            Pelajari Lebih Lanjut
+            <svg
+              className="w-4 h-4 md:w-5 md:h-5 ml-2 transform group-hover:translate-x-2 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
         </div>
       ))}
     </div>
