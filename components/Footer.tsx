@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { FOOTER_LINKS } from '@/app/data/constant';
-import { FaGithub, FaInstagram } from 'react-icons/fa';
+import { LINKS } from '@/config/constant';
+import { FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -22,13 +22,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Dinamis: Tentang Kami */}
+          {/* Tentang Kami */}
           <div>
             <h4 className="text-lg  mb-4 border-b border-emerald-700 pb-2 inline-block font-bold">
               Tentang Kami
             </h4>
             <ul className="space-y-3">
-              {FOOTER_LINKS.about.map((link) => (
+              {LINKS.about.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -40,13 +40,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Dinamis: Informasi */}
+          {/* Informasi */}
           <div>
             <h4 className="text-lg  mb-4 border-b border-emerald-700 pb-2 inline-block font-bold">
               Informasi
             </h4>
             <ul className="space-y-3">
-              {FOOTER_LINKS.info.map((link) => (
+              {LINKS.info.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -58,15 +58,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Dinamis: Kontak */}
+          {/* Kontak */}
           <div>
             <h4 className="text-lg  mb-4 border-b border-emerald-700 pb-2 inline-block font-bold ">
               Lokasi Pondok
             </h4>
             <div className="text-emerald-100 space-y-3 text-sm leading-relaxed">
-              <p>{FOOTER_LINKS.contact.address}</p>
-              <p>{FOOTER_LINKS.contact.phone}</p>
-              <p>{FOOTER_LINKS.contact.email}</p>
+              <p>{LINKS.contact.address}</p>
+              <p>{LINKS.contact.phone}</p>
+              <p>{LINKS.contact.email}</p>
             </div>
           </div>
         </div>

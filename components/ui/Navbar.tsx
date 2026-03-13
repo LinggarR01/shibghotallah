@@ -43,14 +43,14 @@ const Navbar = () => {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* 1. Home */}
+            {/* Home */}
             <Link
               href="/"
               className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold">
               Home
             </Link>
 
-            {/* 2. Tentang Dropdown */}
+            {/* Tentang Dropdown */}
 
             <div
               className="relative"
@@ -112,20 +112,23 @@ const Navbar = () => {
                   </Link>
                   <div className="border-t border-gray-200"></div>
                   <div className="px-4 py-2 text-sm font-semibold text-black">
-                    Profil Pimpinan
+                    Profil Pendiri
                   </div>
                   <Link
-                    href="/tentang/profil-pimpinan/pimpinan-pondok/pimpinan-1"
+                    href="/tentang/profil-pimpinan/pimpinan-pondok/kh-noorsofa-thohir"
                     className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
                     onClick={closeMenus}>
-                    Pimpinan Pondok 1
+                    KH Noorsofa Thohir
                   </Link>
                   <Link
-                    href="/tentang/profil-pimpinan/pimpinan-pondok/pimpinan-2"
+                    href="/tentang/profil-pimpinan/pimpinan-pondok/kh-maman-firmansyah"
                     className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
                     onClick={closeMenus}>
-                    Pimpinan Pondok 2
+                    KH Maman Firmansyah
                   </Link>
+                  <div className="px-4 py-2 text-sm font-semibold text-black">
+                    Profil Pembina
+                  </div>
                   <Link
                     href="/tentang/profil-pimpinan/trimurti/trimurti-1"
                     className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
@@ -142,7 +145,7 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* 3. Sejarah Dropdown */}
+            {/* Sejarah Dropdown */}
 
             <div
               className="relative"
@@ -193,14 +196,14 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* 4. Berita */}
+            {/*  Berita */}
             <Link
               href="/berita"
               className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold">
               Berita
             </Link>
 
-            {/* 5. Pendaftaran Dropdown */}
+            {/* Pendaftaran Dropdown */}
 
             <div
               className="relative"
@@ -245,7 +248,7 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* 6. Kontak */}
+            {/* Kontak */}
             <Link
               href="/kontak"
               className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold">
@@ -287,14 +290,14 @@ const Navbar = () => {
         {mobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-hijau border-t border-gray-200">
-              {/* 1. Mobile Home */}
+              {/* Mobile Home */}
               <Link
                 href="/"
                 className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
                 Home
               </Link>
 
-              {/* 2. Mobile Tentang */}
+              {/* Mobile Tentang */}
               <div>
                 <button
                   onClick={() => toggleDropdown('tentang')}
@@ -352,20 +355,23 @@ const Navbar = () => {
                       Tujuan Pendidikan dan Pengajaran
                     </Link>
                     <div className="px-3 py-2 text-sm font-semibold text-white">
-                      Profil Pimpinan
+                      Profil Pendiri
                     </div>
                     <Link
-                      href="/tentang/profil-pimpinan/pimpinan-pondok/pimpinan-1"
+                      href="/tentang/profil-pimpinan/pimpinan-pondok/kh-noorsofa-thohir"
                       onClick={closeMenus}
                       className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Pimpinan Pondok 1
+                      KH Noorsofa Thohir
                     </Link>
                     <Link
-                      href="/tentang/profil-pimpinan/pimpinan-pondok/pimpinan-2"
+                      href="/tentang/profil-pimpinan/pimpinan-pondok/kh-maman-firmansyah"
                       onClick={closeMenus}
                       className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Pimpinan Pondok 2
+                      KH Maman Firmansyah
                     </Link>
+                    <div className="px-3 py-2 text-sm font-semibold text-white">
+                      Profil Pembina
+                    </div>
                     <Link
                       href="/tentang/profil-pimpinan/trimurti/trimurti-1"
                       onClick={closeMenus}
@@ -382,7 +388,7 @@ const Navbar = () => {
                 )}
               </div>
 
-              {/* 3. Mobile Sejarah */}
+              {/* Mobile Sejarah */}
               <div>
                 <button
                   onClick={() => toggleDropdown('sejarah')}
@@ -431,14 +437,14 @@ const Navbar = () => {
                 )}
               </div>
 
-              {/* 4. Mobile Berita */}
+              {/* Mobile Berita */}
               <Link
                 href="/berita"
                 className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
                 Berita
               </Link>
 
-              {/* 5. Mobile Pendaftaran */}
+              {/* Mobile Pendaftaran */}
               <div>
                 <button
                   onClick={() => toggleDropdown('pendaftaran')}

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Article } from '@/app/data/constant';
+import { Article } from '@/drizzle/actions/article';
 
 export default function News({ articles }: { articles: Article[] }) {
   if (!articles || articles.length === 0) {
@@ -27,32 +27,33 @@ export default function News({ articles }: { articles: Article[] }) {
               className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 hover:border-emerald-200">
               <div className="relative h-48 w-full overflow-hidden group">
                 <Image
-                  src={article.image}
+                  src={article.image || '/placeholder.svg'}
                   alt={article.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    {article.category}
+                    {article.categoryName || 'Berita'}
                   </span>
                 </div>
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-sm text-gray-500">
-                    {new Date(article.date).toLocaleDateString('id-ID', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
+                    {article.createdAt &&
+                      new Date(article.createdAt).toLocaleDateString('id-ID', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
                   </span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-3 line-clamp-2 leading-tight">
                   {article.title}
                 </h3>
                 <p className="text-gray-600 mb-6 line-clamp-3 leading-relaxed">
-                  {article.description}
+                  {article.excerpt}
                 </p>
                 <Link
                   href={`/berita/${article.slug}`}

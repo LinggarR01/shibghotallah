@@ -1,16 +1,23 @@
-'use client';
-
 import Image from 'next/image';
-import News from './components/ui/News';
-import Card from './components/ui/Card';
-import { articles } from './data/constant';
-import { falsafah } from './data/constant';
 import Link from 'next/link';
+import News from '../components/ui/News';
+import Card from '../components/ui/Card';
+import { falsafah } from '../config/constant';
+import { Article } from '@/drizzle/actions/article';
 
-export default function Home() {
+// Ubah menjadi async function untuk mengambil data
+export default async function Home() {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  const res = await fetch(`${API_URL}/api/posts`, {
+    cache: 'no-store',
+  });
+
+  // Pastikan mengubah response menjadi format JSON
+  const articlesData: Article[] = await res.json();
+
   return (
     <div className="min-h-screen bg-white w-full flex flex-col font-quicksand">
-      {/* --- HERO SECTION BARU YANG LEBIH CAKEP --- */}
+      {/* --- HERO SECTION --- */}
       <section className="relative h-dvh w-full flex items-center justify-center overflow-hidden">
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0">
@@ -62,7 +69,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator (Disembunyikan di HP sangat kecil agar tidak sumpek) */}
+        {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce flex-col items-center opacity-70 hidden sm:flex">
           <span className="text-xs font-semibold tracking-widest uppercase mb-2">
             Scroll
@@ -85,7 +92,8 @@ export default function Home() {
 
       {/* News Section */}
       <section className="bg-white">
-        <News articles={articles} />
+        {/* Masukkan array data yang sudah di-fetch ke dalam prop articles */}
+        <News articles={articlesData.slice(0, 3)} />
       </section>
 
       {/* --- ABOUT SECTION --- */}
@@ -99,8 +107,6 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* BAGIAN 1: Split Layout */}
-          {/* Ditambahkan mb-12 md:mb-24 untuk jarak antar section responsif */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 md:mb-24">
             {/* Sisi Kiri: Teks */}
             <div className="order-2 lg:order-1">
@@ -115,7 +121,7 @@ export default function Home() {
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 md:mb-6 leading-tight tracking-tight">
                 Merajut Akhlak, <br className="hidden md:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-600 to-emerald-400">
                   Membangun Peradaban
                 </span>
               </h2>
@@ -137,7 +143,7 @@ export default function Home() {
                   <li
                     key={i}
                     className="flex items-center text-sm md:text-base text-gray-700 font-medium">
-                    <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
+                    <div className="shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
                       <svg
                         className="w-3 h-3 md:w-4 md:h-4 text-emerald-600"
                         fill="none"
@@ -173,9 +179,8 @@ export default function Home() {
               </button>
             </div>
 
-            {/* Sisi Kanan: Komposisi Gambar Estetik */}
+            {/* Sisi Kanan: Gambar */}
             <div className="order-1 lg:order-2 relative mb-8 lg:mb-0">
-              {/* Gambar Utama */}
               <div className="relative h-75 md:h-125 w-full lg:w-4/5 ml-auto rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="/santri.jpg"
@@ -186,7 +191,6 @@ export default function Home() {
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent"></div>
               </div>
 
-              {/* Gambar Tumpuk (Kecil)*/}
               <div className="absolute -bottom-12 left-0 w-2/3 md:h-72 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] border-4 border-white hidden md:block transform hover:-translate-y-2 transition-transform duration-500">
                 <Image
                   src="/santri2.jpg"
