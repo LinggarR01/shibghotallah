@@ -1,4 +1,4 @@
-import { Falsafah } from '@/config/constant';
+import { Falsafah } from '@/utils/constant';
 import Link from 'next/link';
 
 export default function Card({ content }: { content: Falsafah[] }) {

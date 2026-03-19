@@ -226,7 +226,7 @@ export const LINKS: SiteLinks = {
     },
     {
       id: 7,
-      name: 'Info Seleksi & Ujian',
+      name: 'Info Seleksi ',
       href: '/pendaftaran/seleksi-dan-wawancara',
       description:
         'Jadwal, materi ujian tertulis, serta panduan wawancara bagi calon santri dan wali.',
@@ -247,7 +247,7 @@ export const LINKS: SiteLinks = {
     },
     {
       id: 8,
-      name: 'Berita & Pengumuman',
+      name: 'Berita',
       href: '/berita',
       description:
         'Kabar terbaru, artikel kegiatan, dan pengumuman resmi dari redaksi pesantren.',

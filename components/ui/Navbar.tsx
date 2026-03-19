@@ -2,6 +2,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  dropdownVariants,
+  mobileMenuVariants,
+  linkHover,
+} from '@/components/ui/Animations';
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
@@ -25,9 +31,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center shrink-0 px-4">
+          <motion.div
+            className="flex items-center shrink-0 px-4"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}>
             <Link href="/" className="flex items-center gap-3">
-              {/* LOGO IMAGE */}
               <Image
                 src="/logo.png"
                 alt="Logo Shibghotallah"
@@ -39,24 +47,27 @@ const Navbar = () => {
                 SHIBGHOTALLAH
               </span>
             </Link>
-          </div>
+          </motion.div>
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-4">
             {/* Home */}
-            <Link
-              href="/"
-              className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold">
-              Home
-            </Link>
+            <motion.div whileHover={linkHover}>
+              <Link
+                href="/"
+                className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold">
+                Home
+              </Link>
+            </motion.div>
 
             {/* Tentang Dropdown */}
-
             <div
               className="relative"
               onMouseEnter={() => setDropdownOpen('tentang')}
               onMouseLeave={() => setDropdownOpen(null)}>
-              <button className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold flex items-center">
+              <motion.button
+                whileHover={linkHover}
+                className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold flex items-center">
                 Tentang
                 <svg
                   className="ml-1 w-4 h-4"
@@ -70,88 +81,96 @@ const Navbar = () => {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-              </button>
-              {dropdownOpen === 'tentang' && (
-                <div className="absolute right-0  w-64 bg-white border border-gray-700 rounded-md shadow-lg z-10">
-                  <div className="px-4 py-2 text-sm font-semibold text-black">
-                    Falsafah
-                  </div>
-                  <Link
-                    href="/tentang/falsafah/moto"
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
-                    onClick={closeMenus}>
-                    Moto
-                  </Link>
-                  <Link
-                    href="/tentang/falsafah/panca-jangka"
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
-                    onClick={closeMenus}>
-                    Panca Jangka
-                  </Link>
-                  <Link
-                    href="/tentang/falsafah/panca-jiwa"
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
-                    onClick={closeMenus}>
-                    Panca Jiwa
-                  </Link>
-                  <Link
-                    href="/tentang/falsafah/sintesa"
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
-                    onClick={closeMenus}>
-                    Sintesa
-                  </Link>
-                  <div className="border-t border-gray-200"></div>
-                  <div className="px-4 py-2 text-sm font-semibold text-black">
-                    Pendidikan
-                  </div>
-                  <Link
-                    href="/tentang/pendidikan/tujuan-pendidikan-dan-pengajaran"
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
-                    onClick={closeMenus}>
-                    Tujuan Pendidikan dan Pengajaran
-                  </Link>
-                  <div className="border-t border-gray-200"></div>
-                  <div className="px-4 py-2 text-sm font-semibold text-black">
-                    Profil Pendiri
-                  </div>
-                  <Link
-                    href="/tentang/profil-pimpinan/pimpinan-pondok/kh-noorsofa-thohir"
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
-                    onClick={closeMenus}>
-                    KH Noorsofa Thohir
-                  </Link>
-                  <Link
-                    href="/tentang/profil-pimpinan/pimpinan-pondok/kh-maman-firmansyah"
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
-                    onClick={closeMenus}>
-                    KH Maman Firmansyah
-                  </Link>
-                  <div className="px-4 py-2 text-sm font-semibold text-black">
-                    Profil Pembina
-                  </div>
-                  <Link
-                    href="/tentang/profil-pimpinan/trimurti/trimurti-1"
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
-                    onClick={closeMenus}>
-                    Trimurti 1
-                  </Link>
-                  <Link
-                    href="/tentang/profil-pimpinan/trimurti/trimurti-2"
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
-                    onClick={closeMenus}>
-                    Trimurti 2
-                  </Link>
-                </div>
-              )}
+              </motion.button>
+              <AnimatePresence>
+                {dropdownOpen === 'tentang' && (
+                  <motion.div
+                    variants={dropdownVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="absolute right-0 w-64 bg-white border border-gray-700 rounded-md shadow-lg z-10">
+                    <div className="px-4 py-2 text-sm font-semibold text-black">
+                      Falsafah
+                    </div>
+                    <Link
+                      href="/tentang/falsafah/moto"
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
+                      onClick={closeMenus}>
+                      Moto
+                    </Link>
+                    <Link
+                      href="/tentang/falsafah/panca-jangka"
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
+                      onClick={closeMenus}>
+                      Panca Jangka
+                    </Link>
+                    <Link
+                      href="/tentang/falsafah/panca-jiwa"
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
+                      onClick={closeMenus}>
+                      Panca Jiwa
+                    </Link>
+                    <Link
+                      href="/sejarah/sintesa"
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
+                      onClick={closeMenus}>
+                      Sintesa
+                    </Link>
+                    <div className="border-t border-gray-200"></div>
+                    <div className="px-4 py-2 text-sm font-semibold text-black">
+                      Pendidikan
+                    </div>
+                    <Link
+                      href="/tentang/pendidikan/tujuan-pendidikan-dan-pengajaran"
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
+                      onClick={closeMenus}>
+                      Tujuan Pendidikan dan Pengajaran
+                    </Link>
+                    <div className="border-t border-gray-200"></div>
+                    <div className="px-4 py-2 text-sm font-semibold text-black">
+                      Profil Pendiri
+                    </div>
+                    <Link
+                      href="/tentang/profil-pimpinan/pimpinan-pondok/kh-noorsofa-thohir"
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
+                      onClick={closeMenus}>
+                      KH Noorsofa Thohir
+                    </Link>
+                    <Link
+                      href="/tentang/profil-pimpinan/pimpinan-pondok/kh-maman-firmansyah"
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
+                      onClick={closeMenus}>
+                      KH Maman Firmansyah
+                    </Link>
+                    <div className="px-4 py-2 text-sm font-semibold text-black">
+                      Profil Pembina
+                    </div>
+                    <Link
+                      href="/tentang/profil-pimpinan/trimurti/trimurti-1"
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
+                      onClick={closeMenus}>
+                      Trimurti 1
+                    </Link>
+                    <Link
+                      href="/tentang/profil-pimpinan/trimurti/trimurti-2"
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
+                      onClick={closeMenus}>
+                      Trimurti 2
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Sejarah Dropdown */}
-
             <div
               className="relative"
               onMouseEnter={() => setDropdownOpen('sejarah')}
               onMouseLeave={() => setDropdownOpen(null)}>
-              <button className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold flex items-center">
+              <motion.button
+                whileHover={linkHover}
+                className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold flex items-center">
                 Sejarah
                 <svg
                   className="ml-1 w-4 h-4"
@@ -165,51 +184,61 @@ const Navbar = () => {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-              </button>
-              {dropdownOpen === 'sejarah' && (
-                <div className="absolute right-0 w-64 bg-white border border-gray-700 rounded-md shadow-lg z-10">
-                  <Link
-                    href="/sejarah/latar-belakang"
-                    onClick={closeMenus}
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600">
-                    Latar Belakang
-                  </Link>
-                  <Link
-                    href="/sejarah/selayang-pandang"
-                    onClick={closeMenus}
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600">
-                    Selayang Pandang
-                  </Link>
-                  <Link
-                    href="/sejarah/sintesa"
-                    onClick={closeMenus}
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600">
-                    Sintesa
-                  </Link>
-                  <Link
-                    href="/sejarah/struktur-organisasi"
-                    onClick={closeMenus}
-                    className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600">
-                    Struktur Organisasi
-                  </Link>
-                </div>
-              )}
+              </motion.button>
+              <AnimatePresence>
+                {dropdownOpen === 'sejarah' && (
+                  <motion.div
+                    variants={dropdownVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="absolute right-0 w-64 bg-white border border-gray-700 rounded-md shadow-lg z-10">
+                    <Link
+                      href="/sejarah/latar-belakang"
+                      onClick={closeMenus}
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600">
+                      Latar Belakang
+                    </Link>
+                    <Link
+                      href="/sejarah/selayang-pandang"
+                      onClick={closeMenus}
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600">
+                      Selayang Pandang
+                    </Link>
+                    <Link
+                      href="/sejarah/sintesa"
+                      onClick={closeMenus}
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600">
+                      Sintesa
+                    </Link>
+                    <Link
+                      href="/sejarah/struktur-organisasi"
+                      onClick={closeMenus}
+                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600">
+                      Struktur Organisasi
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
-            {/*  Berita */}
-            <Link
-              href="/berita"
-              className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold">
-              Berita
-            </Link>
+            {/* Berita */}
+            <motion.div whileHover={linkHover}>
+              <Link
+                href="/berita"
+                className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold">
+                Berita
+              </Link>
+            </motion.div>
 
             {/* Pendaftaran Dropdown */}
-
             <div
               className="relative"
               onMouseEnter={() => setDropdownOpen('pendaftaran')}
               onMouseLeave={() => setDropdownOpen(null)}>
-              <button className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold flex items-center">
+              <motion.button
+                whileHover={linkHover}
+                className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold flex items-center">
                 Pendaftaran
                 <svg
                   className="ml-1 w-4 h-4"
@@ -223,44 +252,54 @@ const Navbar = () => {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-              </button>
-              {dropdownOpen === 'pendaftaran' && (
-                <div className="absolute right-0  w-48 bg-hijau border border-gray-700 rounded-md shadow-lg z-10">
-                  <Link
-                    href="/pendaftaran/pendaftaran-KMI"
-                    onClick={closeMenus}
-                    className="block px-4 py-2 text-sm text-black hover:text-white bg-white hover:bg-emerald-600">
-                    Pendaftaran KMI
-                  </Link>
-                  <Link
-                    href="/pendaftaran/seleksi-dan-wawancara"
-                    onClick={closeMenus}
-                    className="block px-4 py-2 text-sm text-black hover:text-white bg-white hover:bg-emerald-600">
-                    Seleksi dan Wawancara
-                  </Link>
-                  <Link
-                    href="/pendaftaran/ujian-lanjutan"
-                    onClick={closeMenus}
-                    className="block px-4 py-2 text-sm text-black hover:text-white bg-white hover:bg-emerald-600">
-                    Ujian Lanjutan
-                  </Link>
-                </div>
-              )}
+              </motion.button>
+              <AnimatePresence>
+                {dropdownOpen === 'pendaftaran' && (
+                  <motion.div
+                    variants={dropdownVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="absolute right-0 w-48 bg-hijau border border-gray-700 rounded-md shadow-lg z-10">
+                    <Link
+                      href="/pendaftaran/pendaftaran-KMI"
+                      onClick={closeMenus}
+                      className="block px-4 py-2 text-sm text-black hover:text-white bg-white hover:bg-emerald-600">
+                      Pendaftaran KMI
+                    </Link>
+                    <Link
+                      href="/pendaftaran/seleksi-dan-wawancara"
+                      onClick={closeMenus}
+                      className="block px-4 py-2 text-sm text-black hover:text-white bg-white hover:bg-emerald-600">
+                      Seleksi dan Wawancara
+                    </Link>
+                    <Link
+                      href="/pendaftaran/ujian-lanjutan"
+                      onClick={closeMenus}
+                      className="block px-4 py-2 text-sm text-black hover:text-white bg-white hover:bg-emerald-600">
+                      Ujian Lanjutan
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Kontak */}
-            <Link
-              href="/kontak"
-              className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold">
-              Kontak
-            </Link>
+            <motion.div whileHover={linkHover}>
+              <Link
+                href="/kontak"
+                className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold">
+                Kontak
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
-            <button
+            <motion.button
               onClick={toggleMobileMenu}
-              className="text-white hover:text-emerald-400 focus:outline-none focus:text-maroon">
+              whileTap={{ scale: 0.9 }}
+              className="text-white hover:text-emerald-400 focus:outline-none focus:text-white">
               <svg
                 className="w-6 h-6"
                 fill="none"
@@ -282,220 +321,272 @@ const Navbar = () => {
                   />
                 )}
               </svg>
-            </button>
+            </motion.button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-hijau border-t border-gray-200">
-              {/* Mobile Home */}
-              <Link
-                href="/"
-                className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
-                Home
-              </Link>
+        {/* Mobile Menu with Animation */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              variants={mobileMenuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="md:hidden overflow-hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-hijau border-t border-gray-200">
+                {/* Mobile Home */}
+                <Link
+                  href="/"
+                  className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo"
+                  onClick={closeMenus}>
+                  Home
+                </Link>
 
-              {/* Mobile Tentang */}
-              <div>
-                <button
-                  onClick={() => toggleDropdown('tentang')}
-                  className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
-                  Tentang
-                  <svg
-                    className="ml-1 w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                {dropdownOpen === 'tentang' && (
-                  <div className="pl-4">
-                    <div className="px-3 py-2 text-sm font-semibold text-white">
-                      Falsafah
-                    </div>
-                    <Link
-                      href="/tentang/falsafah/moto"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Moto
-                    </Link>
-                    <Link
-                      href="/tentang/falsafah/panca-jangka"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Panca Jangka
-                    </Link>
-                    <Link
-                      href="/tentang/falsafah/panca-jiwa"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Panca Jiwa
-                    </Link>
-                    <Link
-                      href="/tentang/falsafah/sintesa"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Sintesa
-                    </Link>
-                    <div className="px-3 py-2 text-sm font-semibold text-white">
-                      Pendidikan
-                    </div>
-                    <Link
-                      href="/tentang/pendidikan/tujuan-pendidikan-dan-pengajaran"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Tujuan Pendidikan dan Pengajaran
-                    </Link>
-                    <div className="px-3 py-2 text-sm font-semibold text-white">
-                      Profil Pendiri
-                    </div>
-                    <Link
-                      href="/tentang/profil-pimpinan/pimpinan-pondok/kh-noorsofa-thohir"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      KH Noorsofa Thohir
-                    </Link>
-                    <Link
-                      href="/tentang/profil-pimpinan/pimpinan-pondok/kh-maman-firmansyah"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      KH Maman Firmansyah
-                    </Link>
-                    <div className="px-3 py-2 text-sm font-semibold text-white">
-                      Profil Pembina
-                    </div>
-                    <Link
-                      href="/tentang/profil-pimpinan/trimurti/trimurti-1"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Trimurti 1
-                    </Link>
-                    <Link
-                      href="/tentang/profil-pimpinan/trimurti/trimurti-2"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Trimurti 2
-                    </Link>
-                  </div>
-                )}
+                {/* Mobile Tentang */}
+                <div>
+                  <button
+                    onClick={() => toggleDropdown('tentang')}
+                    className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
+                    Tentang
+                    <svg
+                      className="ml-1 w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {dropdownOpen === 'tentang' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{
+                          height: 'auto',
+                          opacity: 1,
+                          transition: { duration: 0.2 },
+                        }}
+                        exit={{
+                          height: 0,
+                          opacity: 0,
+                          transition: { duration: 0.15 },
+                        }}
+                        className="pl-4 overflow-hidden">
+                        <div className="px-3 py-2 text-sm font-semibold text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Falsafah
+                        </div>
+                        <Link
+                          href="/tentang/falsafah/moto"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Moto
+                        </Link>
+                        <Link
+                          href="/tentang/falsafah/panca-jangka"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Panca Jangka
+                        </Link>
+                        <Link
+                          href="/tentang/falsafah/panca-jiwa"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Panca Jiwa
+                        </Link>
+                        <Link
+                          href="/tentang/falsafah/sintesa"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Sintesa
+                        </Link>
+                        <div className="px-3 py-2 text-sm font-semibold text-white">
+                          Pendidikan
+                        </div>
+                        <Link
+                          href="/tentang/pendidikan/tujuan-pendidikan-dan-pengajaran"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Tujuan Pendidikan dan Pengajaran
+                        </Link>
+                        <div className="px-3 py-2 text-sm font-semibold text-white">
+                          Profil Pendiri
+                        </div>
+                        <Link
+                          href="/tentang/profil-pimpinan/pimpinan-pondok/kh-noorsofa-thohir"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          KH Noorsofa Thohir
+                        </Link>
+                        <Link
+                          href="/tentang/profil-pimpinan/pimpinan-pondok/kh-maman-firmansyah"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          KH Maman Firmansyah
+                        </Link>
+                        <div className="px-3 py-2 text-sm font-semibold text-white">
+                          Profil Pembina
+                        </div>
+                        <Link
+                          href="/tentang/profil-pimpinan/trimurti/trimurti-1"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Trimurti 1
+                        </Link>
+                        <Link
+                          href="/tentang/profil-pimpinan/trimurti/trimurti-2"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Trimurti 2
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Mobile Sejarah */}
+                <div>
+                  <button
+                    onClick={() => toggleDropdown('sejarah')}
+                    className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
+                    Sejarah
+                    <svg
+                      className="ml-1 w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {dropdownOpen === 'sejarah' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{
+                          height: 'auto',
+                          opacity: 1,
+                          transition: { duration: 0.2 },
+                        }}
+                        exit={{
+                          height: 0,
+                          opacity: 0,
+                          transition: { duration: 0.15 },
+                        }}
+                        className="pl-4 overflow-hidden">
+                        <Link
+                          href="/sejarah/latar-belakang"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Latar Belakang
+                        </Link>
+                        <Link
+                          href="/sejarah/selayang-pandang"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Selayang Pandang
+                        </Link>
+                        <Link
+                          href="/sejarah/sintesa"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Sintesa
+                        </Link>
+                        <Link
+                          href="/sejarah/struktur-organisasi"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Struktur Organisasi
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Mobile Berita */}
+                <Link
+                  href="/berita"
+                  className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo"
+                  onClick={closeMenus}>
+                  Berita
+                </Link>
+
+                {/* Mobile Pendaftaran */}
+                <div>
+                  <button
+                    onClick={() => toggleDropdown('pendaftaran')}
+                    className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
+                    Pendaftaran
+                    <svg
+                      className="ml-1 w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {dropdownOpen === 'pendaftaran' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{
+                          height: 'auto',
+                          opacity: 1,
+                          transition: { duration: 0.2 },
+                        }}
+                        exit={{
+                          height: 0,
+                          opacity: 0,
+                          transition: { duration: 0.15 },
+                        }}
+                        className="pl-4 overflow-hidden">
+                        <Link
+                          href="/pendaftaran/pendaftaran-KMI"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Pendaftaran KMI
+                        </Link>
+                        <Link
+                          href="/pendaftaran/seleksi-dan-wawancara"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Seleksi dan Wawancara
+                        </Link>
+                        <Link
+                          href="/pendaftaran/ujian-lanjutan"
+                          onClick={closeMenus}
+                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          Ujian Lanjutan
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Mobile Kontak */}
+                <Link
+                  href="/kontak"
+                  className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo"
+                  onClick={closeMenus}>
+                  Kontak
+                </Link>
               </div>
-
-              {/* Mobile Sejarah */}
-              <div>
-                <button
-                  onClick={() => toggleDropdown('sejarah')}
-                  className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
-                  Sejarah
-                  <svg
-                    className="ml-1 w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                {dropdownOpen === 'sejarah' && (
-                  <div className="pl-4">
-                    <Link
-                      href="/sejarah/latar-belakang"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Latar Belakang
-                    </Link>
-                    <Link
-                      href="/sejarah/selayang-pandang"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Selayang Pandang
-                    </Link>
-                    <Link
-                      href="/sejarah/sintesa"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Sintesa
-                    </Link>
-                    <Link
-                      href="/sejarah/struktur-organisasi"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Struktur Organisasi
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Mobile Berita */}
-              <Link
-                href="/berita"
-                className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
-                Berita
-              </Link>
-
-              {/* Mobile Pendaftaran */}
-              <div>
-                <button
-                  onClick={() => toggleDropdown('pendaftaran')}
-                  className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
-                  Pendaftaran
-                  <svg
-                    className="ml-1 w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                {dropdownOpen === 'pendaftaran' && (
-                  <div className="pl-4">
-                    <Link
-                      href="/pendaftaran/pendaftaran-KMI"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Pendaftaran KMI
-                    </Link>
-                    <Link
-                      href="/pendaftaran/seleksi-dan-wawancara"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Seleksi dan Wawancara
-                    </Link>
-                    <Link
-                      href="/pendaftaran/ujian-lanjutan"
-                      onClick={closeMenus}
-                      className="block px-3 py-2 text-sm text-white hover:bg-hijau">
-                      Ujian Lanjutan
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* 6. Mobile Kontak */}
-              <Link
-                href="/kontak"
-                className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
-                Kontak
-              </Link>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { LINKS } from '@/config/constant';
+import { LINKS } from '@/utils/constant';
 import { FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
