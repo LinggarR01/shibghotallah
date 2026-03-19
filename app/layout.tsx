@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Inter } from 'next/font/google';
+import { Geist, Geist_Mono, Inter, Quicksand } from 'next/font/google';
 import './globals.css';
 import Navbar from '../components/ui/Navbar';
 import Footer from '../components/Footer';
@@ -15,6 +15,11 @@ const inter = Inter({
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
+  subsets: ['latin'],
+});
+
+const quicksand = Quicksand({
+  variable: '--font-quicksand',
   subsets: ['latin'],
 });
 

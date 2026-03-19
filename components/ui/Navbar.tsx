@@ -338,7 +338,7 @@ const Navbar = () => {
                 {/* Mobile Home */}
                 <Link
                   href="/"
-                  className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo"
+                  className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 "
                   onClick={closeMenus}>
                   Home
                 </Link>
@@ -347,7 +347,7 @@ const Navbar = () => {
                 <div>
                   <button
                     onClick={() => toggleDropdown('tentang')}
-                    className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
+                    className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 ">
                     Tentang
                     <svg
                       className="ml-1 w-4 h-4"
@@ -377,31 +377,31 @@ const Navbar = () => {
                           transition: { duration: 0.15 },
                         }}
                         className="pl-4 overflow-hidden">
-                        <div className="px-3 py-2 text-sm font-semibold text-white hover:bg-white hover:text-hijau rounded-2xl">
+                        <div className="px-3 py-2 text-sm font-semibold text-white active:bg-white active:text-hijau rounded-2xl">
                           Falsafah
                         </div>
                         <Link
                           href="/tentang/falsafah/moto"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Moto
                         </Link>
                         <Link
                           href="/tentang/falsafah/panca-jangka"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Panca Jangka
                         </Link>
                         <Link
                           href="/tentang/falsafah/panca-jiwa"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Panca Jiwa
                         </Link>
                         <Link
                           href="/tentang/falsafah/sintesa"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Sintesa
                         </Link>
                         <div className="px-3 py-2 text-sm font-semibold text-white">
@@ -410,7 +410,7 @@ const Navbar = () => {
                         <Link
                           href="/tentang/pendidikan/tujuan-pendidikan-dan-pengajaran"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Tujuan Pendidikan dan Pengajaran
                         </Link>
                         <div className="px-3 py-2 text-sm font-semibold text-white">
@@ -419,13 +419,13 @@ const Navbar = () => {
                         <Link
                           href="/tentang/profil-pimpinan/pimpinan-pondok/kh-noorsofa-thohir"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           KH Noorsofa Thohir
                         </Link>
                         <Link
                           href="/tentang/profil-pimpinan/pimpinan-pondok/kh-maman-firmansyah"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           KH Maman Firmansyah
                         </Link>
                         <div className="px-3 py-2 text-sm font-semibold text-white">
@@ -434,13 +434,13 @@ const Navbar = () => {
                         <Link
                           href="/tentang/profil-pimpinan/trimurti/trimurti-1"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Trimurti 1
                         </Link>
                         <Link
                           href="/tentang/profil-pimpinan/trimurti/trimurti-2"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Trimurti 2
                         </Link>
                       </motion.div>
@@ -452,7 +452,7 @@ const Navbar = () => {
                 <div>
                   <button
                     onClick={() => toggleDropdown('sejarah')}
-                    className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
+                    className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 ">
                     Sejarah
                     <svg
                       className="ml-1 w-4 h-4"
@@ -485,25 +485,25 @@ const Navbar = () => {
                         <Link
                           href="/sejarah/latar-belakang"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Latar Belakang
                         </Link>
                         <Link
                           href="/sejarah/selayang-pandang"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Selayang Pandang
                         </Link>
                         <Link
                           href="/sejarah/sintesa"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Sintesa
                         </Link>
                         <Link
                           href="/sejarah/struktur-organisasi"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Struktur Organisasi
                         </Link>
                       </motion.div>
@@ -514,7 +514,7 @@ const Navbar = () => {
                 {/* Mobile Berita */}
                 <Link
                   href="/berita"
-                  className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo"
+                  className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 "
                   onClick={closeMenus}>
                   Berita
                 </Link>
@@ -523,7 +523,7 @@ const Navbar = () => {
                 <div>
                   <button
                     onClick={() => toggleDropdown('pendaftaran')}
-                    className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo">
+                    className="flex items-center w-full px-3 py-2 text-base font-bold text-white hover:text-emerald-400 ">
                     Pendaftaran
                     <svg
                       className="ml-1 w-4 h-4"
@@ -556,19 +556,19 @@ const Navbar = () => {
                         <Link
                           href="/pendaftaran/pendaftaran-KMI"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Pendaftaran KMI
                         </Link>
                         <Link
                           href="/pendaftaran/seleksi-dan-wawancara"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Seleksi dan Wawancara
                         </Link>
                         <Link
                           href="/pendaftaran/ujian-lanjutan"
                           onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white hover:bg-white hover:text-hijau rounded-2xl">
+                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Ujian Lanjutan
                         </Link>
                       </motion.div>
@@ -579,7 +579,7 @@ const Navbar = () => {
                 {/* Mobile Kontak */}
                 <Link
                   href="/kontak"
-                  className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 hover:bg-maroo"
+                  className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 "
                   onClick={closeMenus}>
                   Kontak
                 </Link>
