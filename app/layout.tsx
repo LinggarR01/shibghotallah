@@ -5,23 +5,10 @@ import Navbar from '../components/ui/Navbar';
 import Footer from '../components/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-const inter = Inter({
-  variable: '--font-inter',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
-
 const quicksand = Quicksand({
-  variable: '--font-quicksand',
   subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-quicksand',
 });
 
 export const metadata: Metadata = {
@@ -39,8 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${quicksand.variable} antialiased`}>
         <Navbar />
         <main className="flex w-full flex-col items-center justify-between bg-dark sm:items-start">
           {children}

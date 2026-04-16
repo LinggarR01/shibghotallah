@@ -33,9 +33,11 @@ export default function HomeClient({ articles }: HomeClientProps) {
             src="/pondokpesantren.webp"
             alt="Pondok Pesantren Shibghotallah"
             fill
+            fetchPriority="high"
             className="object-cover object-center scale-105 animate-[pulse_20s_ease-in-out_infinite]"
             priority
-            sizes="(max-width: 768px) 100vw, 100vw"
+            quality={75}
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-linear-to-b from-black/70 via-emerald-900/60 to-black/80"></div>
         </div>
@@ -227,7 +229,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
                   src="/santri.webp"
                   alt="Kegiatan Santri Utama"
                   fill
-                  sizes="(max-width: 768px) 100vw, 100vw"
+                  sizes="100vw"
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent"></div>
@@ -243,7 +245,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
                   src="/santri2.webp"
                   alt="Suasana Pondok"
                   fill
-                  sizes="(max-width: 768px) 100vw, 100vw"
+                  sizes="100vw"
                   className="object-cover"
                 />
               </motion.div>

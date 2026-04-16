@@ -16,7 +16,7 @@ export const linkHover = {
 };
 
 export const fadeInUp = {
-  hidden: { opacity: 0, y: 60 },
+  hidden: { opacity: 1, y: 20 }, // <-- opacity 1, bukan 0
   visible: {
     opacity: 1,
     y: 0,

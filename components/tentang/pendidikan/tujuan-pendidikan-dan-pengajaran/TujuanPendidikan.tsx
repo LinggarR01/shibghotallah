@@ -5,9 +5,9 @@ export default function TujuanPendidikan() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
           {/* Judul dengan border-bottom responsif */}
           <div className="mb-4 md:mb-8">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 border-b-4 pb-2 border-emerald-700 inline-block">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 border-b-4 pb-2 border-emerald-700 inline-block">
               Tujuan Pendidikan
-            </h2>
+            </h1>
           </div>
 
           <p className="text-base md:text-xl text-gray-700 mb-4 italic leading-relaxed">
