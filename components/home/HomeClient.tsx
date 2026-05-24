@@ -31,7 +31,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
         <div className="absolute inset-0 z-0">
           <Image
             src="/pondokpesantren.webp"
-            alt="Pondok Pesantren Shibghotallah"
+            alt="Pondok Pesantren Shibghatallah"
             fill
             fetchPriority="high"
             className="object-cover object-center scale-105 animate-[pulse_20s_ease-in-out_infinite]"
@@ -67,7 +67,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
           <motion.p
             variants={fadeInUp}
             className="text-base sm:text-lg md:text-2xl font-medium mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto text-gray-200 drop-shadow-md px-4">
-            Pondok Pesantren Modern Shibghotallah memadukan pendidikan Islam
+            Pondok Pesantren Modern Shibghatallah memadukan pendidikan Islam
             klasik dengan wawasan global untuk menyongsong masa depan umat.
           </motion.p>
 
@@ -161,7 +161,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
                 </span>
               </h2>
               <p className="text-base md:text-lg text-gray-600 mb-6 md:mb-8 leading-relaxed">
-                Pondok Pesantren Shibghotallah hadir sebagai oase pendidikan
+                Pondok Pesantren Shibghatallah hadir sebagai oase pendidikan
                 Islam yang memadukan kedalaman spiritual, kecerdasan
                 intelektual, dan ketangguhan karakter. Kami berkomitmen mencetak
                 generasi yang tidak hanya memahami agama, tetapi juga siap

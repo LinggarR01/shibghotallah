@@ -3,11 +3,18 @@ import { db } from '@/lib/db';
 import { posts } from '@/drizzle/schema';
 import { eq } from 'drizzle-orm';
 
-const handleError = (error: any) => {
-  return NextResponse.json({ error: error.message }, { status: 500 });
+const handleError = (error: unknown) => {
+  const message =
+    error instanceof Error ? error.message : 'Terjadi kesalahan server';
+  return NextResponse.json({ error: message }, { status: 500 });
 };
 
-// Mengambil semua kategori
+const getPostById = async (id: number) => {
+  const result = await db.select().from(posts).where(eq(posts.id, id)).limit(1);
+  return result[0];
+};
+
+// Mengambil semua post atau satu post berdasarkan slug
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
@@ -30,7 +37,6 @@ export async function GET(req: Request) {
       return NextResponse.json(singlePost[0]);
     }
 
-    // Jika tidak ada parameter slug, kembalikan SEMUA data
     const allPosts = await db.select().from(posts);
     return NextResponse.json(allPosts);
   } catch (error) {
@@ -43,9 +49,15 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const newPost = await db.insert(posts).values(body).returning();
+    const result = await db.insert(posts).values(body).$returningId();
+    const insertedId = result[0]?.id;
 
-    return NextResponse.json(newPost[0], { status: 201 });
+    if (!insertedId) {
+      return NextResponse.json({ error: 'Post gagal dibuat' }, { status: 500 });
+    }
+
+    const newPost = await getPostById(insertedId);
+    return NextResponse.json(newPost, { status: 201 });
   } catch (error) {
     return handleError(error);
   }
@@ -56,21 +68,28 @@ export async function PUT(req: Request) {
   try {
     const body = await req.json();
     const { id, ...updates } = body;
+    const postId = Number(id);
 
-    const updatedPost = await db
-      .update(posts)
-      .set(updates)
-      .where(eq(posts.id, id))
-      .returning();
+    if (!postId) {
+      return NextResponse.json(
+        { error: 'ID post wajib diisi' },
+        { status: 400 },
+      );
+    }
 
-    if (updatedPost.length === 0) {
+    const existingPost = await getPostById(postId);
+
+    if (!existingPost) {
       return NextResponse.json(
         { error: 'Post tidak ditemukan' },
         { status: 404 },
       );
     }
 
-    return NextResponse.json(updatedPost[0]);
+    await db.update(posts).set(updates).where(eq(posts.id, postId));
+
+    const updatedPost = await getPostById(postId);
+    return NextResponse.json(updatedPost);
   } catch (error) {
     return handleError(error);
   }
@@ -80,20 +99,27 @@ export async function PUT(req: Request) {
 export async function DELETE(req: Request) {
   try {
     const { id } = await req.json();
+    const postId = Number(id);
 
-    const deletedPost = await db
-      .delete(posts)
-      .where(eq(posts.id, id))
-      .returning();
+    if (!postId) {
+      return NextResponse.json(
+        { error: 'ID post wajib diisi' },
+        { status: 400 },
+      );
+    }
 
-    if (deletedPost.length === 0) {
+    const existingPost = await getPostById(postId);
+
+    if (!existingPost) {
       return NextResponse.json(
         { error: 'Post tidak ditemukan' },
         { status: 404 },
       );
     }
 
-    return NextResponse.json(deletedPost[0]);
+    await db.delete(posts).where(eq(posts.id, postId));
+
+    return NextResponse.json(existingPost);
   } catch (error) {
     return handleError(error);
   }

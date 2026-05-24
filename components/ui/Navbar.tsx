@@ -28,7 +28,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-hijau shadow-lg fixed top-0 w-full z-50 font-quicksand">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <motion.div
@@ -38,13 +38,13 @@ const Navbar = () => {
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/logo.png"
-                alt="Logo Shibghotallah"
+                alt="Logo Shibghatallah"
                 width={60}
                 height={60}
                 className="w-10 h-10 md:w-14 md:h-14 p-1 bg-white rounded-full object-contain transition-all duration-300"
               />
               <span className="font-bold text-white text-lg md:text-2xl transition-all duration-300">
-                SHIBGHOTALLAH
+                SHIBGHATALLAH
               </span>
             </Link>
           </motion.div>

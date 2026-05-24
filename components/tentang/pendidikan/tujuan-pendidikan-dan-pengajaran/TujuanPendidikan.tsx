@@ -53,7 +53,7 @@ export default function TujuanPendidikan() {
                 </h3>
                 <p className="text-gray-700 text-sm md:text-base italic leading-relaxed">
                   Program ini dilakukan sebagai bagian dari peran serta
-                  Pesantren Shibghotallah Al-Islamy dalam da&apos;wah dan
+                  Pesantren Shibghatallah Al-Islamy dalam da&apos;wah dan
                   pendidikan Islam kepada masyarakat. Pengajian umum dan
                   pengajian khusus untuk bapak-bapak dan ibu-ibu.
                 </p>
@@ -78,10 +78,10 @@ export default function TujuanPendidikan() {
 
           {/* Footer teks */}
           <p className="mt-12 md:mt-16 text-xs md:text-sm text-gray-500 italic text-center max-w-3xl mx-auto leading-relaxed">
-            Uraian lebih lanjut dari semua program Pesantren Shibghotallah
+            Uraian lebih lanjut dari semua program Pesantren Shibghatallah
             Al-Islamy baik akademik maupun kegiatan lain akan dijelaskan lebih
             terperinci dalam panduan kurikulum dan akademis Pesantren
-            Shibghotallah Al-Islamy.
+            Shibghatallah Al-Islamy.
           </p>
         </div>
       </section>

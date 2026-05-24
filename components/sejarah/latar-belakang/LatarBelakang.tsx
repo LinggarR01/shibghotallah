@@ -17,8 +17,8 @@ export default function LatarBelakang() {
             yang menjadi energi kiprah duniawi.
           </p>
           <p className="text-base md:text-xl text-black leading-relaxed mt-4">
-            Dengan harapan dan cita-cita yang demikian Pesantren Shibghotallah
-            Al-Islamy didirikan. Pondok Pesantren Shibghotallah Al-Islamy
+            Dengan harapan dan cita-cita yang demikian Pesantren Shibghatallah
+            Al-Islamy didirikan. Pondok Pesantren Shibghatallah Al-Islamy
             merupakan salah satu institusi{' '}
             <span className="font-bold">tarbiyah</span> (pendidikan),{' '}
             <span className="font-bold">tajribah</span> (latihan), dan{' '}
@@ -29,13 +29,13 @@ export default function LatarBelakang() {
             memenuhi kebutuhan umat.
           </p>
           <p className="text-base md:text-xl text-black leading-relaxed mt-4">
-            Pondok Pesantren Shibghotallah Al-Islamy merupakan keberlanjutan
+            Pondok Pesantren Shibghatallah Al-Islamy merupakan keberlanjutan
             dari pendidikan TK Islam Terpadu Al Barkah dan juga Rumah Tahfidz As
             Suada, yang sebelumnya sudah dijalankan.
           </p>
           <p className="text-base md:text-xl text-black leading-relaxed mt-4">
             Sebagai langkah bertahap yang sudah kami jalankan, Pesantren
-            Shibghotallah Al-Islamy menjadi harapan kami untuk melangkah lebih
+            Shibghatallah Al-Islamy menjadi harapan kami untuk melangkah lebih
             jauh dalam menghasilkan generasi muda muslim yang tangguh dan
             berintegritas.
           </p>

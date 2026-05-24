@@ -143,7 +143,7 @@ export const LINKS: SiteLinks = {
       name: 'Profil Pimpinan',
       href: '/tentang/profil-pimpinan/pimpinan-pondok/kh-noorsofa-thohir',
       description:
-        'Mengenal lebih dekat sosok pimpinan dan pengasuh Pondok Pesantren Shibghotallah.',
+        'Mengenal lebih dekat sosok pimpinan dan pengasuh Pondok Pesantren Shibghatallah.',
       icon: (
         <svg
           className="w-6 h-6"
@@ -292,6 +292,6 @@ export const LINKS: SiteLinks = {
     address:
       'Jl. Belibis V, RT.19/RW.4, Semper Barat, Kec. Cilincing, Kota Jakarta Utara, Daerah Khusus Ibukota Jakarta 14130',
     phone: '(021) 123-4567',
-    email: 'info@shibghotallah.edu',
+    email: 'info@shibghatallah.edu',
   },
 };
