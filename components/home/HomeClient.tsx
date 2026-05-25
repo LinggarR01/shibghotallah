@@ -49,7 +49,6 @@ export default function HomeClient({ articles }: HomeClientProps) {
           <motion.div
             variants={fadeInUp}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 md:mb-8">
-            <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
             <span className="text-xs sm:text-sm md:text-base font-semibold tracking-wide text-emerald-50">
               Pendaftaran Santri Baru Telah Dibuka
             </span>

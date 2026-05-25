@@ -51,12 +51,12 @@ const Navbar = () => {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* Home */}
+            {/* Beranda */}
             <motion.div whileHover={linkHover}>
               <Link
                 href="/"
                 className="text-white hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-bold">
-                Home
+                Beranda
               </Link>
             </motion.div>
 
@@ -314,12 +314,12 @@ const Navbar = () => {
               exit="exit"
               className="md:hidden overflow-hidden">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-hijau border-t border-gray-200">
-                {/* Mobile Home */}
+                {/* Mobile Beranda */}
                 <Link
                   href="/"
                   className="block px-3 py-2 text-base font-bold text-white hover:text-emerald-400 "
                   onClick={closeMenus}>
-                  Home
+                  Beranda
                 </Link>
 
                 {/* Mobile Tentang */}
