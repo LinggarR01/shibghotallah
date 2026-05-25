@@ -12,11 +12,52 @@ const quicksand = Quicksand({
 });
 
 export const metadata: Metadata = {
-  title: 'Pondok Modern Shibghatallah Al-Islamy',
+  metadataBase: new URL('https://pondokmodernshibghatallah.com'),
+
+  title: {
+    default: 'Pondok Modern Shibghatallah',
+    template: '%s | Pondok Modern Shibghatallah',
+  },
+
   description:
-    'Website resmi Pondok Modern Shibghatallah Al-Islamy untuk informasi pesantren, kegiatan, dan pendaftaran santri.',
+    'Website resmi Pondok Modern Shibghatallah untuk informasi profil pesantren, program pendidikan, dan pendaftaran santri baru.',
+
+  keywords: [
+    'Pondok Modern Shibghatallah',
+    'Pondok Pesantren',
+    'Pesantren Modern',
+    'Pendaftaran Santri Baru',
+    'PSB Shibghatallah',
+    'Pendidikan Islam',
+  ],
+
   icons: {
     icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
+
+  openGraph: {
+    title: 'Pondok Modern Shibghatallah',
+    description:
+      'Informasi resmi profil pesantren, program pendidikan, dan pendaftaran santri baru Pondok Modern Shibghatallah.',
+    url: 'https://pondokmodernshibghatallah.com',
+    siteName: 'Pondok Modern Shibghatallah',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Pondok Modern Shibghatallah',
+      },
+    ],
+    locale: 'id_ID',
+    type: 'website',
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
