@@ -38,13 +38,13 @@ const Navbar = () => {
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/logo.png"
-                alt="Logo Shibghatallah"
+                alt="Logo Shibghatallah Al-Islamy"
                 width={60}
                 height={60}
                 className="w-10 h-10 md:w-14 md:h-14 p-1 bg-white rounded-full object-contain transition-all duration-300"
               />
               <span className="font-bold text-white text-lg md:text-2xl transition-all duration-300">
-                SHIBGHATALLAH
+                Shibghatallah Al-Islamy
               </span>
             </Link>
           </motion.div>
@@ -143,21 +143,6 @@ const Navbar = () => {
                       onClick={closeMenus}>
                       KH Maman Firmansyah
                     </Link>
-                    <div className="px-4 py-2 text-sm font-semibold text-black">
-                      Profil Pembina
-                    </div>
-                    <Link
-                      href="/tentang/profil-pimpinan/trimurti/trimurti-1"
-                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
-                      onClick={closeMenus}>
-                      Trimurti 1
-                    </Link>
-                    <Link
-                      href="/tentang/profil-pimpinan/trimurti/trimurti-2"
-                      className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600"
-                      onClick={closeMenus}>
-                      Trimurti 2
-                    </Link>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -212,10 +197,10 @@ const Navbar = () => {
                       Sintesa
                     </Link>
                     <Link
-                      href="/sejarah/struktur-organisasi"
+                      href="/sejarah/badan-wakaf"
                       onClick={closeMenus}
                       className="block px-4 py-2 text-sm text-black hover:text-white hover:bg-emerald-600">
-                      Struktur Organisasi
+                      Badan Wakaf
                     </Link>
                   </motion.div>
                 )}
@@ -262,22 +247,16 @@ const Navbar = () => {
                     exit="exit"
                     className="absolute right-0 w-48 bg-hijau border border-gray-700 rounded-md shadow-lg z-10">
                     <Link
-                      href="/pendaftaran/pendaftaran-KMI"
+                      href="/pendaftaran/informasi-pendaftaran"
                       onClick={closeMenus}
                       className="block px-4 py-2 text-sm text-black hover:text-white bg-white hover:bg-emerald-600">
-                      Pendaftaran KMI
+                      Informasi Pendaftaran
                     </Link>
                     <Link
-                      href="/pendaftaran/seleksi-dan-wawancara"
+                      href="https://www.google.com"
                       onClick={closeMenus}
                       className="block px-4 py-2 text-sm text-black hover:text-white bg-white hover:bg-emerald-600">
-                      Seleksi dan Wawancara
-                    </Link>
-                    <Link
-                      href="/pendaftaran/ujian-lanjutan"
-                      onClick={closeMenus}
-                      className="block px-4 py-2 text-sm text-black hover:text-white bg-white hover:bg-emerald-600">
-                      Ujian Lanjutan
+                      Pendaftaran
                     </Link>
                   </motion.div>
                 )}
@@ -428,21 +407,6 @@ const Navbar = () => {
                           className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           KH Maman Firmansyah
                         </Link>
-                        <div className="px-3 py-2 text-sm font-semibold text-white">
-                          Profil Pembina
-                        </div>
-                        <Link
-                          href="/tentang/profil-pimpinan/trimurti/trimurti-1"
-                          onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
-                          Trimurti 1
-                        </Link>
-                        <Link
-                          href="/tentang/profil-pimpinan/trimurti/trimurti-2"
-                          onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
-                          Trimurti 2
-                        </Link>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -501,10 +465,10 @@ const Navbar = () => {
                           Sintesa
                         </Link>
                         <Link
-                          href="/sejarah/struktur-organisasi"
+                          href="/sejarah/badan-wakaf"
                           onClick={closeMenus}
                           className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
-                          Struktur Organisasi
+                          Badan Wakaf
                         </Link>
                       </motion.div>
                     )}
@@ -554,22 +518,16 @@ const Navbar = () => {
                         }}
                         className="pl-4 overflow-hidden">
                         <Link
-                          href="/pendaftaran/pendaftaran-KMI"
+                          href="https://www.google.com"
                           onClick={closeMenus}
                           className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
-                          Pendaftaran KMI
+                          Pendaftaran
                         </Link>
                         <Link
-                          href="/pendaftaran/seleksi-dan-wawancara"
+                          href="/pendaftaran/informasi-pendaftaran"
                           onClick={closeMenus}
                           className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
-                          Seleksi dan Wawancara
-                        </Link>
-                        <Link
-                          href="/pendaftaran/ujian-lanjutan"
-                          onClick={closeMenus}
-                          className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
-                          Ujian Lanjutan
+                          Informasi Pendaftaran
                         </Link>
                       </motion.div>
                     )}

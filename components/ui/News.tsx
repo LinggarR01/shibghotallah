@@ -16,7 +16,7 @@ export default function News({ articles }: { articles: Article[] }) {
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Temukan informasi terkini tentang kegiatan dan perkembangan di
-            pondok pesantren kami.
+            pondok modern kami.
           </p>
         </div>
 

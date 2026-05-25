@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="sm:col-span-2 lg:col-span-2">
             <h3 className="text-2xl font-bold mb-4">
-              Pondok Pesantren <br /> Shibghatallah
+              Pondok Modern <br /> Shibghatallah Al-Islamy
             </h3>
             <p className="text-emerald-50 leading-relaxed mb-3 max-w-sm">
               Modern Islamic Boarding School yang berkomitmen untuk mencetak
@@ -73,8 +73,8 @@ export default function Footer() {
 
         <div className="border-t border-emerald-800 mt-12 pt-8 text-center md:text-left text-emerald-200 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Pondok Pesantren Shibghatallah.
-            All rights reserved.
+            &copy; {new Date().getFullYear()} Pondok Modern Shibghatallah
+            Al-Islamy. All rights reserved.
           </p>
         </div>
       </div>

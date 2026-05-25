@@ -31,7 +31,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
         <div className="absolute inset-0 z-0">
           <Image
             src="/pondokpesantren.webp"
-            alt="Pondok Pesantren Shibghatallah"
+            alt="Pondok Modern Shibghatallah Al-Islamy"
             fill
             fetchPriority="high"
             className="object-cover object-center scale-105 animate-[pulse_20s_ease-in-out_infinite]"
@@ -67,7 +67,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
           <motion.p
             variants={fadeInUp}
             className="text-base sm:text-lg md:text-2xl font-medium mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto text-gray-200 drop-shadow-md px-4">
-            Pondok Pesantren Modern Shibghatallah memadukan pendidikan Islam
+            Pondok Modern Shibghatallah Al-Islamy memadukan pendidikan Islam
             klasik dengan wawasan global untuk menyongsong masa depan umat.
           </motion.p>
 
@@ -76,14 +76,14 @@ export default function HomeClient({ articles }: HomeClientProps) {
             className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center px-4">
             <motion.div variants={scaleIn}>
               <Link
-                href="/pendaftaran/pendaftaran-KMI"
+                href="https://www.google.com"
                 className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-emerald-950 px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transform hover:-translate-y-1 block text-center">
                 Daftar Sekarang
               </Link>
             </motion.div>
             <motion.div variants={scaleIn}>
               <Link
-                href="/sejarah/selayang-pandang"
+                href="/sejarah/latar-belakang"
                 className="w-full sm:w-auto bg-white/10 backdrop-blur-md border border-white/30 text-white hover:bg-white hover:text-emerald-900 px-8 py-4 rounded-full font-bold transition-all duration-300 transform hover:-translate-y-1 block text-center">
                 Jelajahi Profil Pondok
               </Link>
@@ -161,8 +161,8 @@ export default function HomeClient({ articles }: HomeClientProps) {
                 </span>
               </h2>
               <p className="text-base md:text-lg text-gray-600 mb-6 md:mb-8 leading-relaxed">
-                Pondok Pesantren Shibghatallah hadir sebagai oase pendidikan
-                Islam yang memadukan kedalaman spiritual, kecerdasan
+                Pondok Modern Shibghatallah Al-Islamy hadir sebagai oase
+                pendidikan Islam yang memadukan kedalaman spiritual, kecerdasan
                 intelektual, dan ketangguhan karakter. Kami berkomitmen mencetak
                 generasi yang tidak hanya memahami agama, tetapi juga siap
                 menjadi pemimpin di era modern.

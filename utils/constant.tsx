@@ -143,7 +143,7 @@ export const LINKS: SiteLinks = {
       name: 'Profil Pimpinan',
       href: '/tentang/profil-pimpinan/pimpinan-pondok/kh-noorsofa-thohir',
       description:
-        'Mengenal lebih dekat sosok pimpinan dan pengasuh Pondok Pesantren Shibghatallah.',
+        'Mengenal lebih dekat sosok pimpinan dan pengasuh Pondok Modern Shibghatallah Al-Islamy.',
       icon: (
         <svg
           className="w-6 h-6"
@@ -164,7 +164,7 @@ export const LINKS: SiteLinks = {
       name: 'Sejarah Berdiri',
       href: '/sejarah/latar-belakang',
       description:
-        'Perjalanan panjang dan tonggak sejarah berdirinya pondok pesantren dari masa ke masa.',
+        'Perjalanan panjang dan tonggak sejarah berdirinya pondok modern dari masa ke masa.',
       icon: (
         <svg
           className="w-6 h-6"
@@ -182,8 +182,8 @@ export const LINKS: SiteLinks = {
     },
     {
       id: 5,
-      name: 'Struktur Organisasi',
-      href: '/sejarah/struktur-organisasi',
+      name: 'Badan Wakaf',
+      href: '/sejarah/badan-wakaf',
       description:
         'Bagan kepengurusan dan lembaga-lembaga yang menggerakkan roda kehidupan pondok.',
       icon: (
@@ -205,8 +205,8 @@ export const LINKS: SiteLinks = {
   info: [
     {
       id: 6,
-      name: 'Pendaftaran Santri (KMI)',
-      href: '/pendaftaran/pendaftaran-KMI',
+      name: 'Pendaftaran',
+      href: 'https://www.google.com',
       description:
         'Informasi lengkap tata cara dan syarat pendaftaran santri baru program KMI.',
       icon: (
@@ -226,8 +226,8 @@ export const LINKS: SiteLinks = {
     },
     {
       id: 7,
-      name: 'Info Seleksi ',
-      href: '/pendaftaran/seleksi-dan-wawancara',
+      name: 'Informasi Pendaftaran ',
+      href: '/pendaftaran/informasi-pendaftaran',
       description:
         'Jadwal, materi ujian tertulis, serta panduan wawancara bagi calon santri dan wali.',
       icon: (
@@ -271,7 +271,7 @@ export const LINKS: SiteLinks = {
       name: 'Hubungi Kami',
       href: '/kontak',
       description:
-        'Layanan informasi, nomor kontak resmi, dan alamat lengkap pondok pesantren.',
+        'Layanan informasi, nomor kontak resmi, dan alamat lengkap pondok modern.',
       icon: (
         <svg
           className="w-6 h-6"
@@ -295,5 +295,3 @@ export const LINKS: SiteLinks = {
     email: 'info@shibghatallah.edu',
   },
 };
-
-// Tes Commit

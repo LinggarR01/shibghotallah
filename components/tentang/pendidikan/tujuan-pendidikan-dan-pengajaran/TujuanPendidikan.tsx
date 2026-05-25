@@ -11,7 +11,7 @@ export default function TujuanPendidikan() {
           </div>
 
           <p className="text-base md:text-xl text-gray-700 mb-4 italic leading-relaxed">
-            Tujuan dari pondok pesantren adalah sebagai berikut:
+            Tujuan dari pondok adalah sebagai berikut:
           </p>
 
           <ul className="list-disc pl-5 space-y-4 text-base md:text-xl text-black leading-relaxed mb-12 md:mb-16">
@@ -31,11 +31,11 @@ export default function TujuanPendidikan() {
           {/* Box Container */}
           <div className="bg-emerald-50 p-5 md:p-10 rounded-2xl border-l-[6px] md:border-l-12 border-emerald-700 shadow-sm">
             <p className="text-gray-800 text-sm md:text-lg mb-8 leading-relaxed text-justify md:text-left">
-              Pondok pesantren bukanlah lembaga yang eksklusif yang tidak
-              berinteraksi dengan masyarakat. Pondok pesantren dapat menjadi
-              magnet bagi masyarakat yang ingin mengenal{' '}
+              Pondok Modern bukanlah lembaga yang eksklusif yang tidak
+              berinteraksi dengan masyarakat. Pondok Modern dapat menjadi magnet
+              bagi masyarakat yang ingin mengenal{' '}
               <span className="font-semibold">Islam</span> dalam rangka
-              memperbaiki amaliahnya. Karena itu lingkungan pondok pesantren
+              memperbaiki amaliahnya. Karena itu lingkungan pondok modern
               sedapat mungkin mencerminkan miniatur masyarakat madani sehingga
               syiar Islam akan dapat dirasakan oleh masyarakat di sekitar pondok
               pesantren. Adapun program pesantren untuk masyarakat sekitar
