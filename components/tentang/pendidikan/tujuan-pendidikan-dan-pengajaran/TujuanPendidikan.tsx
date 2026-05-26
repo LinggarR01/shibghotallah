@@ -1,7 +1,7 @@
 export default function TujuanPendidikan() {
   return (
     <div className="min-h-screen bg-white w-full flex flex-col font-quicksand ">
-      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
           {/* Judul dengan border-bottom responsif */}
           <div className="mb-4 md:mb-8">

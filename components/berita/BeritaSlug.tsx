@@ -16,7 +16,7 @@ export default function BeritaSlug({ post }: BeritaSlugProps) {
       animate="visible"
       variants={fadeInUp}
       className="min-h-screen bg-white w-full flex flex-col font-quicksand">
-      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 relative z-10">
           <motion.div
             variants={fadeInUp}

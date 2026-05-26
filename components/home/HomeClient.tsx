@@ -131,7 +131,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={staggerContainer}
-        className="py-16 md:py-24 bg-white relative overflow-hidden">
+        className="py-24 bg-white relative overflow-hidden">
         {/* Ornamen Background */}
         <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3">
           <div className="w-64 h-64 md:w-96 md:h-96 bg-emerald-50 rounded-full blur-3xl opacity-60"></div>

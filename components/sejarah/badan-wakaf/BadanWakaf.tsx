@@ -1,37 +1,68 @@
+import { badanWakafSections } from '@/utils/constant';
+import Link from 'next/link';
+
 export default function BadanWakaf() {
   return (
     <div className="min-h-screen bg-white w-full flex flex-col font-quicksand">
-      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 border-b-4 pb-2 border-emerald-700 inline-block">
             Badan Wakaf
           </h1>
-          <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam
-            quaerat laudantium odit nisi nulla ratione cumque eum repellat sunt
-            molestiae! Ducimus magnam quidem nam? Corrupti maiores dicta tempora
-            molestias velit aspernatur rem modi consectetur assumenda amet
-            tenetur perspiciatis sed eos placeat soluta aliquam at, natus
-            repellendus! Quas itaque hic dolor. Sint nam eum, nobis a, adipisci,
-            tenetur recusandae quam repellat earum possimus omnis provident
-            quia? Corporis, amet ducimus officiis omnis, voluptatem excepturi
-            dolor voluptas laborum eius alias officia sunt dolorum magni illum!
-            Nesciunt quia et explicabo officiis id dolores quos sequi molestias
-            velit nisi totam, saepe facere aut eligendi laboriosam deleniti!
-            Adipisci porro ab placeat recusandae. Repellendus possimus suscipit
-            quisquam ullam! Sapiente, ullam? Molestias odio quod deleniti
-            architecto ipsam quisquam amet molestiae id accusamus assumenda
-            dignissimos, veritatis, officia perferendis sequi, eligendi cumque
-            reiciendis magnam voluptatum. Nostrum, nesciunt! Velit, veritatis.
-            Impedit commodi temporibus sapiente sequi eveniet, modi a aut
-            aliquid. Libero ducimus adipisci odio fugiat dolore fuga facere
-            dolores vel, aperiam at perferendis magnam assumenda. Ex
-            necessitatibus nihil nemo dolores aliquid ipsam, tempora quia omnis,
-            accusamus quidem quam aliquam repellendus? Distinctio quaerat,
-            dignissimos autem, magni exercitationem fuga deleniti laborum,
-            dolores minima officiis suscipit. Necessitatibus assumenda culpa
-            possimus, a placeat perspiciatis aliquid?
-          </p>
+
+          <div className="space-y-5 text-base md:text-lg text-gray-600 leading-relaxed">
+            <p>
+              Badan Wakaf Shibghotallah Al-Islamy merupakan unsur penting dalam
+              menjaga amanah, arah perjuangan, dan keberlangsungan pendidikan
+              pondok modern. Keberadaan badan wakaf menjadi bentuk tanggung
+              jawab bersama dalam mengelola, mengembangkan, dan memajukan
+              lembaga pendidikan Islam agar senantiasa memberikan manfaat bagi
+              umat.
+            </p>
+
+            <p>
+              Dengan semangat keikhlasan, musyawarah, dan pengabdian, Badan
+              Wakaf Shibghotallah Al-Islamy berperan dalam mendukung visi pondok
+              untuk membina generasi muslim yang beriman, berilmu, berakhlak
+              mulia, mandiri, serta siap berkhidmat kepada agama, masyarakat,
+              bangsa, dan negara.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {badanWakafSections.map((section) => (
+              <div
+                key={section.title}
+                className="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-emerald-300 hover:shadow-md">
+                <h2 className="text-xl font-bold text-gray-900">
+                  {section.title}
+                </h2>
+
+                <div className="mt-4 h-1 w-14 rounded-full bg-emerald-700" />
+
+                <ol className="mt-5 space-y-3">
+                  {section.members.map((member, index) => (
+                    <li
+                      key={member}
+                      className="flex gap-3 text-base leading-relaxed text-gray-600">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-sm font-bold text-emerald-700">
+                        {index + 1}
+                      </span>
+
+                      <span>{member}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 flex items-center justify-between border-t border-gray-200 pt-6">
+            <Link
+              href="/sejarah/sintesa"
+              className="text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
+              ← Sintesa
+            </Link>
+          </div>
         </div>
       </section>
     </div>

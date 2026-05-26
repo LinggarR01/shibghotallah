@@ -26,6 +26,121 @@ export interface SiteLinks {
   contact: ContactInfo;
 }
 
+export interface PancaJangka {
+  title: string;
+  description: string;
+}
+
+export interface PancaJiwa {
+  title: string;
+  description: string;
+}
+
+export interface BadanWakafSection {
+  title: string;
+  members: string[];
+}
+
+export const badanWakafSections: BadanWakafSection[] = [
+  {
+    title: 'Trimurti',
+    members: [
+      'K.H. Noorshofa Thohir',
+      'K.H. Danial Qonaruddin',
+      'K.H. Maman Firmansyah',
+    ],
+  },
+  {
+    title: 'Ketua Badan Wakaf',
+    members: ['Prof. Amsal Bakhtiar', 'K.H. Fushiladdin'],
+  },
+  {
+    title: 'Sekretaris',
+    members: ['K.H. Yusuf Hadi Permana', 'Iqbal S'],
+  },
+  {
+    title: 'Bendahara',
+    members: ['Noor M. Thohir', 'Iqbal Maula'],
+  },
+  {
+    title: 'Dewan Pakar',
+    members: ['K.H. Dr. Idris A.S.', 'K.H. Saefuddin Zen', 'K.H. Unsil Habib'],
+  },
+  {
+    title: 'Seksi Pendidikan',
+    members: [
+      'K.H. Drs. Amin Zaini',
+      'K.H. Dr. Aminullah HM',
+      'K.H. Drs. Amroni Yahya',
+      'K.H. Eka Kurniadi',
+    ],
+  },
+  {
+    title: 'Seksi Dana dan Bidang Usaha',
+    members: ['Ustadz H. Zamiluddin', 'H. Tengku Azhari', 'Ustadz H. Iyan'],
+  },
+  {
+    title: 'Seksi Pengembangan dan Pembangunan',
+    members: ['Ir. H. Ahmad Yani', 'Imam Zarkasyi'],
+  },
+];
+
+export const pancaJiwaItems: PancaJiwa[] = [
+  {
+    title: 'Keikhlasan',
+    description:
+      'Setiap amal, ibadah, dan perjuangan dilakukan semata-mata karena Allah SWT, tanpa mengharap pujian atau balasan dari manusia.',
+  },
+  {
+    title: 'Kesederhanaan',
+    description:
+      'Santri dibina untuk hidup sederhana, tidak berlebihan, rendah hati, serta mampu mensyukuri nikmat Allah dalam segala keadaan.',
+  },
+  {
+    title: 'Kemandirian',
+    description:
+      'Santri dilatih untuk bertanggung jawab atas dirinya sendiri, memiliki mental kuat, disiplin, dan tidak mudah bergantung kepada orang lain.',
+  },
+  {
+    title: 'Ukhuwah Islamiyah',
+    description:
+      'Kehidupan pondok dibangun atas dasar persaudaraan, saling menghormati, saling menolong, dan menjaga persatuan sesama muslim.',
+  },
+  {
+    title: 'Kebebasan yang Bertanggung Jawab',
+    description:
+      'Santri diarahkan untuk berpikir luas, bersikap bijak, dan menggunakan kebebasan dalam batas nilai-nilai Islam serta adab yang mulia.',
+  },
+];
+
+export const pancaJangkaItems: PancaJangka[] = [
+  {
+    title: 'Pendidikan dan Pengajaran',
+    description:
+      'Meningkatkan kualitas pendidikan Islam yang seimbang antara ilmu agama, ilmu umum, pembinaan akhlak, dan keterampilan hidup santri.',
+  },
+  {
+    title: 'Kaderisasi',
+    description:
+      'Mempersiapkan generasi penerus yang memiliki jiwa kepemimpinan, keikhlasan, tanggung jawab, dan semangat perjuangan dalam dakwah Islam.',
+  },
+  {
+    title: 'Sarana dan Prasarana',
+    description:
+      'Mengembangkan fasilitas pendidikan dan lingkungan pondok yang nyaman, tertib, bersih, serta mendukung proses belajar dan ibadah santri.',
+  },
+  {
+    title: 'Kemandirian Pondok',
+    description:
+      'Membangun kemandirian pesantren melalui pengelolaan sumber daya secara amanah, produktif, dan bermanfaat bagi keberlangsungan pendidikan.',
+  },
+  {
+    title: 'Pengabdian Masyarakat',
+    description:
+      'Menanamkan kepedulian sosial kepada santri agar mampu memberikan manfaat bagi masyarakat melalui dakwah, pendidikan, dan akhlak mulia.',
+  },
+];
+
 export const falsafah: Falsafah[] = [
   {
     id: 1,
