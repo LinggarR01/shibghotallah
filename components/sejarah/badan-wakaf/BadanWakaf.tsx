@@ -25,7 +25,7 @@ export default function BadanWakaf() {
             variants={staggerContainer}
             className="space-y-5 text-base md:text-lg text-gray-600 leading-relaxed">
             <motion.p variants={fadeInUp}>
-              Badan Wakaf Shibghotallah Al-Islamy merupakan unsur penting dalam
+              Badan Wakaf Shibghatallah Al-Islamy merupakan unsur penting dalam
               menjaga amanah, arah perjuangan, dan keberlangsungan pendidikan
               pondok pesantren. Keberadaan badan wakaf menjadi bentuk tanggung
               jawab bersama dalam mengelola, mengembangkan, dan memajukan
@@ -35,7 +35,7 @@ export default function BadanWakaf() {
 
             <motion.p variants={fadeInUp}>
               Dengan semangat keikhlasan, musyawarah, dan pengabdian, Badan
-              Wakaf Shibghotallah Al-Islamy berperan dalam mendukung visi pondok
+              Wakaf Shibghatallah Al-Islamy berperan dalam mendukung visi pondok
               untuk membina generasi muslim yang beriman, berilmu, berakhlak
               mulia, mandiri, serta siap berkhidmat kepada agama, masyarakat,
               bangsa, dan negara.
