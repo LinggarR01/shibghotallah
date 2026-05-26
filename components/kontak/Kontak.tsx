@@ -1,14 +1,15 @@
 'use client';
+
 import { LINKS } from '@/utils/constant';
 import { fadeInUp, staggerContainer } from '@/components/ui/Animations';
+import GoogleMaps from '@/components/ui/GoogleMaps';
 import { motion } from 'motion/react';
 
 export default function Kontak() {
   return (
     <div className="min-h-screen bg-gray-50 w-full flex flex-col font-quicksand">
-      {/* Main Content Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative">
-        <div className="max-w-3xl mx-auto">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
           {/* Card Informasi Kontak */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -50,6 +51,7 @@ export default function Kontak() {
                     />
                   </svg>
                 </div>
+
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-1">
                     Alamat Pondok
@@ -76,6 +78,7 @@ export default function Kontak() {
                     />
                   </svg>
                 </div>
+
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-1">
                     Telepon & WhatsApp
@@ -100,6 +103,7 @@ export default function Kontak() {
                     />
                   </svg>
                 </div>
+
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-1">
                     Email Resmi
@@ -108,6 +112,18 @@ export default function Kontak() {
                 </div>
               </motion.div>
             </motion.div>
+          </motion.div>
+
+          {/* Google Maps */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.5 }}>
+            <GoogleMaps
+              title="Lokasi Pondok Pesantren"
+              address="Pondok Pesantren Shibghotallah Al-Islamy, Jl. Belibis V, Semper Barat, Cilincing, Jakarta Utara"
+              embedUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.9624321764495!2d106.92677857492892!3d-6.135750093851109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698b55c954cfcf%3A0x1d65a33047be229f!2sPondok%20Pesantren%20Shibghotallah%20Al%20Islamy!5e0!3m2!1sen!2sus!4v1779818031933!5m2!1sen!2sus"
+            />
           </motion.div>
         </div>
       </section>

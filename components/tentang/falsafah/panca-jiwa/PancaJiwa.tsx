@@ -1,5 +1,8 @@
+'use client';
 import { pancaJiwaItems } from '@/utils/constant';
 import Link from 'next/link';
+import { motion } from 'motion/react';
+import { fadeInUp, staggerContainer } from '@/components/ui/Animations';
 
 export default function PancaJiwa() {
   return (
@@ -26,11 +29,18 @@ export default function PancaJiwa() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <motion.div
+            variants={staggerContainer}
+            className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {pancaJiwaItems.map((item, index) => (
-              <div
+              <motion.div
                 key={item.title}
-                className="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+                variants={fadeInUp}
+                whileHover={{
+                  y: -6,
+                  transition: { duration: 0.2 },
+                }}
+                className="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm transition hover:shadow-md">
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-700 text-sm font-bold text-white">
                   {index + 1}
                 </div>
@@ -42,9 +52,9 @@ export default function PancaJiwa() {
                 <p className="mt-3 text-base leading-relaxed text-gray-600">
                   {item.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
           <div className="mt-12 flex items-center justify-between border-t border-gray-200 pt-6">
             <Link
               href="/tentang/falsafah/panca-jangka"
