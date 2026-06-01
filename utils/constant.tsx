@@ -415,8 +415,8 @@ export const LINKS: SiteLinks = {
   contact: {
     address:
       'Jl. Belibis V, RT.19/RW.4, Semper Barat, Kec. Cilincing, Kota Jakarta Utara, Daerah Khusus Ibukota Jakarta 14130',
-    phone: '(021) 123-4567',
-    email: 'info@shibghatallah.edu',
+    phone: '0853-5314-5949',
+    email: 'info@pondokmodernshibghtallah.com',
     socialMedia: {
       instagram: 'https://www.instagram.com/shibghatallah',
       facebook: 'https://www.facebook.com/shibghatallah',
