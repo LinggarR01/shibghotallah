@@ -18,6 +18,15 @@ export interface ContactInfo {
   address: string;
   phone: string;
   email: string;
+  socialMedia: SocialMedia;
+}
+
+export interface SocialMedia {
+  instagram?: string;
+  facebook?: string;
+  twitter?: string;
+  youtube?: string;
+  tiktok?: string;
 }
 
 export interface SiteLinks {
@@ -408,5 +417,12 @@ export const LINKS: SiteLinks = {
       'Jl. Belibis V, RT.19/RW.4, Semper Barat, Kec. Cilincing, Kota Jakarta Utara, Daerah Khusus Ibukota Jakarta 14130',
     phone: '(021) 123-4567',
     email: 'info@shibghatallah.edu',
+    socialMedia: {
+      instagram: 'https://www.instagram.com/shibghatallah',
+      facebook: 'https://www.facebook.com/shibghatallah',
+      twitter: 'https://twitter.com/shibghatallah',
+      youtube: 'https://www.youtube.com/c/Shibghotallah',
+      tiktok: 'https://www.tiktok.com/@shibghatallah',
+    },
   },
 };

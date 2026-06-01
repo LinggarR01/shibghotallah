@@ -30,11 +30,11 @@ export default function HomeClient({ articles }: HomeClientProps) {
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/pondokpesantren.webp"
+            src="/pondok-pesantren.webp"
             alt="Pondok Modern Shibghatallah Al-Islamy"
             fill
             fetchPriority="high"
-            className="object-cover object-center scale-105 animate-[pulse_20s_ease-in-out_infinite]"
+            className="object-cover object-center scale-150 animate-[pulse_20s_ease-in-out_infinite]"
             priority
             quality={75}
             sizes="100vw"
@@ -45,21 +45,21 @@ export default function HomeClient({ articles }: HomeClientProps) {
         {/* Content */}
         <motion.div
           variants={staggerContainer}
-          className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mt-16 md:mt-0">
-          <motion.div
-            variants={fadeInUp}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 md:mb-8">
-            <span className="text-xs sm:text-sm md:text-base font-semibold tracking-wide text-emerald-50">
-              Pendaftaran Santri Baru Telah Dibuka
-            </span>
-          </motion.div>
-
+          className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mt-16 md:mt-0">
           <motion.h1
             variants={fadeInUp}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 md:mb-6 tracking-tight drop-shadow-xl">
-            Mencetak Generasi <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-300 to-emerald-100">
-              Qur'ani & Inspiratif
+            Pondok Modern Shibghatallah <span></span>
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-600 to-emerald-100">
+              Al-Islamy
+            </span>
+          </motion.h1>
+
+          <motion.h1
+            variants={fadeInUp}
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 tracking-tight drop-shadow-xl">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-white">
+              Mencetak Generasi Qur'ani & Inspiratif
             </span>
           </motion.h1>
 
@@ -67,7 +67,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
             variants={fadeInUp}
             className="text-base sm:text-lg md:text-2xl font-medium mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto text-gray-200 drop-shadow-md px-4">
             Pondok Modern Shibghatallah Al-Islamy memadukan pendidikan Islam
-            klasik dengan wawasan global untuk menyongsong masa depan umat.
+            kurikulum Gontor dengan kurikulum Kementerian Agama.
           </motion.p>
 
           <motion.div
@@ -114,16 +114,6 @@ export default function HomeClient({ articles }: HomeClientProps) {
         </motion.div>
       </motion.section>
       {/* --- AKHIR HERO SECTION --- */}
-
-      {/* News Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInUp}
-        className="bg-white">
-        <News articles={articles.slice(0, 3)} />
-      </motion.section>
 
       {/* --- ABOUT SECTION --- */}
       <motion.section
@@ -225,10 +215,10 @@ export default function HomeClient({ articles }: HomeClientProps) {
               className="order-1 lg:order-2 relative mb-8 lg:mb-0">
               <div className="relative h-75 md:h-125 w-full lg:w-4/5 ml-auto rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/santri.webp"
+                  src="/asrama.webp"
                   alt="Kegiatan Santri Utama"
                   fill
-                  sizes="100vw"
+                  sizes="(max-width: 1024px) 100vw, 80vw"
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent"></div>
@@ -236,16 +226,17 @@ export default function HomeClient({ articles }: HomeClientProps) {
 
               <motion.div
                 initial={{ x: -100, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
+                whileInView={{ x: -80, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="absolute -bottom-12 left-0 w-2/3 md:h-72 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] border-4 border-white hidden md:block transform hover:-translate-y-2 transition-transform duration-500">
+                className="absolute -bottom-12 left-0 h-104 w-88 lg:h-128 lg:w-md rounded-3xl overflow-hidden hidden lg:block hover:-translate-y-2 transition-transform duration-500 ">
                 <Image
-                  src="/santri2.webp"
+                  src="/santri.webp"
                   alt="Suasana Pondok"
                   fill
-                  sizes="100vw"
+                  sizes="(min-width: 1024px) 448px, 352px"
                   className="object-cover"
+                  priority
                 />
               </motion.div>
             </motion.div>
@@ -255,6 +246,16 @@ export default function HomeClient({ articles }: HomeClientProps) {
           <motion.div variants={fadeInUp} className="mt-12 md:mt-20">
             <Card content={falsafah} />
           </motion.div>
+
+          {/* News Section */}
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+            className="bg-white">
+            <News articles={articles.slice(0, 3)} />
+          </motion.section>
         </div>
       </motion.section>
     </motion.div>

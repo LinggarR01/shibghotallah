@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className="bg-hijau shadow-lg fixed top-0 w-full z-50 font-quicksand">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
           <motion.div
             className="flex items-center shrink-0 px-4"
@@ -43,14 +43,14 @@ const Navbar = () => {
                 height={60}
                 className="w-10 h-10 md:w-14 md:h-14 p-1 bg-white rounded-full object-contain transition-all duration-300"
               />
-              <span className="font-bold text-white text-lg md:text-2xl transition-all duration-300">
+              <span className="truncate font-bold text-white text-lg sm:text-xl lg:text-2xl transition-all duration-300 ">
                 Shibghatallah Al-Islamy
               </span>
             </Link>
           </motion.div>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             {/* Beranda */}
             <motion.div whileHover={linkHover}>
               <Link
@@ -274,7 +274,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <motion.button
               onClick={toggleMobileMenu}
               whileTap={{ scale: 0.9 }}
@@ -312,7 +312,7 @@ const Navbar = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="md:hidden overflow-hidden">
+              className="lg:hidden overflow-hidden">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-hijau border-t border-gray-200">
                 {/* Mobile Beranda */}
                 <Link

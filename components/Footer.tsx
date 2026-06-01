@@ -1,7 +1,36 @@
 'use client';
 import Link from 'next/link';
 import { LINKS } from '@/utils/constant';
-import { FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
+
+const socialItems = [
+  {
+    name: 'Facebook',
+    href: LINKS.contact.socialMedia.facebook,
+    icon: FaFacebookF,
+  },
+  {
+    name: 'Instagram',
+    href: LINKS.contact.socialMedia.instagram,
+    icon: FaInstagram,
+  },
+  {
+    name: 'TikTok',
+    href: LINKS.contact.socialMedia.tiktok,
+    icon: FaTiktok,
+  },
+  {
+    name: 'X',
+    href: LINKS.contact.socialMedia.twitter,
+    icon: FaXTwitter,
+  },
+  {
+    name: 'YouTube',
+    href: LINKS.contact.socialMedia.youtube,
+    icon: FaYoutube,
+  },
+].filter((item) => Boolean(item.href));
 
 export default function Footer() {
   return (
@@ -13,12 +42,28 @@ export default function Footer() {
             <h3 className="text-2xl font-bold mb-4">
               Pondok Modern <br /> Shibghatallah Al-Islamy
             </h3>
+
             <p className="text-emerald-50 leading-relaxed mb-3 max-w-sm">
               Modern Islamic Boarding School yang berkomitmen untuk mencetak
               generasi muda yang beriman, berilmu, dan berakhlak mulia.
             </p>
+
             <div className="flex space-x-4">
-              <FaInstagram className="text-2xl hover:text-emerald-200 cursor-pointer transition-colors duration-300" />
+              {socialItems.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.name}
+                    className="text-2xl hover:text-emerald-200 cursor-pointer transition-colors duration-300">
+                    <Icon />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
