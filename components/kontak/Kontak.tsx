@@ -75,7 +75,7 @@ export default function Kontak() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
-            className="w-full rounded-3xl border border-gray-100 bg-white p-4 shadow-xl sm:p-7 md:p-10">
+            className="w-full overflow-hidden rounded-3xl">
             <h3 className="mb-6 border-b border-emerald-100 pb-4 text-center text-xl font-bold text-gray-900 sm:text-2xl md:mb-8">
               Informasi Kontak
             </h3>
