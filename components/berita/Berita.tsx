@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import News from '../ui/News';
-import { Article } from '@/drizzle/actions/article';
+import { Article } from '@/drizzle/actions/posts';
 import { fadeInUp, staggerContainer } from '../ui/Animations';
 
 interface BeritaProps {

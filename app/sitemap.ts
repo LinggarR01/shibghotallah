@@ -2,35 +2,39 @@ import type { MetadataRoute } from 'next';
 
 const baseUrl = 'https://pondokmodernshibghatallah.com';
 
+export const revalidate = 86400;
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date('2026-06-02');
+
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
       url: `${baseUrl}/berita`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/tentang`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/informasi-pendaftaran`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/kontak`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
     },

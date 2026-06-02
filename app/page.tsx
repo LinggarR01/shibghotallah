@@ -1,8 +1,10 @@
 import HomeClient from '@/components/home/HomeClient';
-import { fetchAllPosts } from '@/lib/fetch';
+import { getAllPosts } from '@/drizzle/actions/posts';
 
-export default async function Home() {
-  const articlesData = await fetchAllPosts();
+export const dynamic = 'force-dynamic';
 
-  return <HomeClient articles={articlesData} />;
+export default async function HomePage() {
+  const articles = await getAllPosts(3);
+
+  return <HomeClient articles={articles} />;
 }

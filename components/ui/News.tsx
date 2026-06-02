@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Article } from '@/drizzle/actions/article';
+import { Article } from '@/drizzle/actions/posts';
 
 export default function News({ articles }: { articles: Article[] }) {
   if (!articles || articles.length === 0) {

@@ -1,8 +1,10 @@
 import Berita from '@/components/berita/Berita';
-import { fetchAllPosts } from '@/lib/fetch';
+import { getAllPosts } from '@/drizzle/actions/posts';
+
+export const dynamic = 'force-dynamic';
 
 export default async function BeritaPage() {
-  const articlesData = await fetchAllPosts();
+  const articlesData = await getAllPosts(12);
 
   return (
     <div className="min-h-screen bg-white w-full flex flex-col font-quicksand">

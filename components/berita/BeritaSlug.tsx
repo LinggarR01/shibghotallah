@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Article } from '@/drizzle/actions/article';
+import { Article } from '@/drizzle/actions/posts';
 import { fadeInUp, scaleIn } from '../ui/Animations';
 
 interface BeritaSlugProps {

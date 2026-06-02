@@ -8,7 +8,26 @@ if (!databaseUrl) {
   throw new Error('DATABASE_URL belum diatur di file .env');
 }
 
-const pool = mysql.createPool(databaseUrl);
+declare global {
+  // eslint-disable-next-line no-var
+  var mysqlPool: mysql.Pool | undefined;
+}
+
+const pool =
+  globalThis.mysqlPool ??
+  mysql.createPool({
+    uri: databaseUrl,
+    waitForConnections: true,
+    connectionLimit: 5,
+    queueLimit: 0,
+
+    enableKeepAlive: true,
+    keepAliveInitialDelay: 0,
+  });
+
+if (process.env.NODE_ENV !== 'production') {
+  globalThis.mysqlPool = pool;
+}
 
 export const db = drizzle(pool, {
   schema,

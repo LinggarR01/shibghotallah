@@ -1,30 +1,42 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { posts } from '@/drizzle/schema';
-import { eq } from 'drizzle-orm';
+import { posts, categories } from '@/drizzle/schema';
+import { and, desc, eq } from 'drizzle-orm';
 
 const handleError = (error: unknown) => {
   const message =
     error instanceof Error ? error.message : 'Terjadi kesalahan server';
+
   return NextResponse.json({ error: message }, { status: 500 });
 };
 
-const getPostById = async (id: number) => {
-  const result = await db.select().from(posts).where(eq(posts.id, id)).limit(1);
-  return result[0];
-};
-
-// Mengambil semua post atau satu post berdasarkan slug
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
+
     const slug = searchParams.get('slug');
+    const limitParam = searchParams.get('limit');
+    const limit = limitParam ? Number(limitParam) : 10;
+
+    const safeLimit = Number.isFinite(limit) && limit > 0 ? limit : 10;
 
     if (slug) {
       const singlePost = await db
-        .select()
+        .select({
+          id: posts.id,
+          title: posts.title,
+          slug: posts.slug,
+          excerpt: posts.excerpt,
+          content: posts.content,
+          image: posts.image,
+          status: posts.status,
+          categoryName: categories.name,
+          createdAt: posts.createdAt,
+          publishedAt: posts.publishedAt,
+        })
         .from(posts)
-        .where(eq(posts.slug, slug))
+        .leftJoin(categories, eq(posts.categoryId, categories.id))
+        .where(and(eq(posts.slug, slug), eq(posts.status, 'published')))
         .limit(1);
 
       if (singlePost.length === 0) {
@@ -34,92 +46,38 @@ export async function GET(req: Request) {
         );
       }
 
-      return NextResponse.json(singlePost[0]);
+      return NextResponse.json(singlePost[0], {
+        headers: {
+          'Cache-Control':
+            'public, s-maxage=3600, stale-while-revalidate=86400',
+        },
+      });
     }
 
-    const allPosts = await db.select().from(posts);
-    return NextResponse.json(allPosts);
-  } catch (error) {
-    return handleError(error);
-  }
-}
+    const allPosts = await db
+      .select({
+        id: posts.id,
+        title: posts.title,
+        slug: posts.slug,
+        excerpt: posts.excerpt,
+        content: posts.content,
+        image: posts.image,
+        status: posts.status,
+        categoryName: categories.name,
+        createdAt: posts.createdAt,
+        publishedAt: posts.publishedAt,
+      })
+      .from(posts)
+      .leftJoin(categories, eq(posts.categoryId, categories.id))
+      .where(eq(posts.status, 'published'))
+      .orderBy(desc(posts.publishedAt), desc(posts.id))
+      .limit(safeLimit);
 
-// Membuat post baru
-export async function POST(req: Request) {
-  try {
-    const body = await req.json();
-
-    const result = await db.insert(posts).values(body).$returningId();
-    const insertedId = result[0]?.id;
-
-    if (!insertedId) {
-      return NextResponse.json({ error: 'Post gagal dibuat' }, { status: 500 });
-    }
-
-    const newPost = await getPostById(insertedId);
-    return NextResponse.json(newPost, { status: 201 });
-  } catch (error) {
-    return handleError(error);
-  }
-}
-
-// Mengupdate post
-export async function PUT(req: Request) {
-  try {
-    const body = await req.json();
-    const { id, ...updates } = body;
-    const postId = Number(id);
-
-    if (!postId) {
-      return NextResponse.json(
-        { error: 'ID post wajib diisi' },
-        { status: 400 },
-      );
-    }
-
-    const existingPost = await getPostById(postId);
-
-    if (!existingPost) {
-      return NextResponse.json(
-        { error: 'Post tidak ditemukan' },
-        { status: 404 },
-      );
-    }
-
-    await db.update(posts).set(updates).where(eq(posts.id, postId));
-
-    const updatedPost = await getPostById(postId);
-    return NextResponse.json(updatedPost);
-  } catch (error) {
-    return handleError(error);
-  }
-}
-
-// Menghapus post
-export async function DELETE(req: Request) {
-  try {
-    const { id } = await req.json();
-    const postId = Number(id);
-
-    if (!postId) {
-      return NextResponse.json(
-        { error: 'ID post wajib diisi' },
-        { status: 400 },
-      );
-    }
-
-    const existingPost = await getPostById(postId);
-
-    if (!existingPost) {
-      return NextResponse.json(
-        { error: 'Post tidak ditemukan' },
-        { status: 404 },
-      );
-    }
-
-    await db.delete(posts).where(eq(posts.id, postId));
-
-    return NextResponse.json(existingPost);
+    return NextResponse.json(allPosts, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   } catch (error) {
     return handleError(error);
   }

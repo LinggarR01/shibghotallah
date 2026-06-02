@@ -1,19 +1,25 @@
 import { notFound } from 'next/navigation';
 import BeritaSlug from '@/components/berita/BeritaSlug';
-import { fetchPostBySlug } from '@/lib/fetch';
+import { getPostBySlug } from '@/drizzle/actions/posts';
 
-export default async function BeritaPage({
+export const dynamic = 'force-dynamic';
+
+type BeritaDetailPageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+export default async function BeritaDetailPage({
   params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug;
+}: BeritaDetailPageProps) {
+  const { slug } = await params;
 
-  try {
-    const post = await fetchPostBySlug(slug);
-    return <BeritaSlug post={post} />;
-  } catch (error) {
+  const post = await getPostBySlug(slug);
+
+  if (!post) {
     notFound();
   }
+
+  return <BeritaSlug post={post} />;
 }

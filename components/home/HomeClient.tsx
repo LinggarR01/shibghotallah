@@ -4,7 +4,7 @@ import Link from 'next/link';
 import News from '@/components/ui/News'; // adjust path as needed
 import Card from '@/components/ui/Card';
 import { falsafah } from '../../utils/constant';
-import { Article } from '@/drizzle/actions/article';
+import { Article } from '@/drizzle/actions/posts';
 import { motion } from 'framer-motion';
 import {
   fadeInUp,
