@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   ],
 
   icons: {
-    icon: '/logo.png',
-    shortcut: '/logo.png',
-    apple: '/logo.png',
+    icon: '/logo.webp',
+    shortcut: '/logo.webp',
+    apple: '/logo.webp',
   },
 
   openGraph: {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: 'Pondok Modern Shibghatallah',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'Pondok Modern Shibghatallah',

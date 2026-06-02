@@ -37,7 +37,7 @@ const Navbar = () => {
             whileTap={{ scale: 0.98 }}>
             <Link href="/" className="flex items-center gap-3">
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Logo Shibghatallah Al-Islamy"
                 width={60}
                 height={60}

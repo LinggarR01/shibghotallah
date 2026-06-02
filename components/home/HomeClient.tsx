@@ -26,7 +26,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
       {/* --- HERO SECTION --- */}
       <motion.section
         variants={fadeInUp}
-        className="relative h-dvh w-full flex items-center justify-center overflow-hidden">
+        className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -34,7 +34,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
             alt="Pondok Modern Shibghatallah Al-Islamy"
             fill
             fetchPriority="high"
-            className="object-cover object-center scale-150 animate-[pulse_20s_ease-in-out_infinite]"
+            className="object-cover object-center scale-150 "
             priority
             quality={75}
             sizes="100vw"
@@ -121,7 +121,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={staggerContainer}
-        className="py-24 bg-white relative overflow-hidden">
+        className="py-14 md:py-24 bg-white relative overflow-hidden">
         {/* Ornamen Background */}
         <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3">
           <div className="w-64 h-64 md:w-96 md:h-96 bg-emerald-50 rounded-full blur-3xl opacity-60"></div>
@@ -212,16 +212,17 @@ export default function HomeClient({ articles }: HomeClientProps) {
             {/* Sisi Kanan: Gambar */}
             <motion.div
               variants={scaleIn}
-              className="order-1 lg:order-2 relative mb-8 lg:mb-0">
-              <div className="relative h-75 md:h-125 w-full lg:w-4/5 ml-auto rounded-3xl overflow-hidden shadow-2xl">
+              className="order-1 lg:order-2 relative mb-10 lg:mb-0 overflow-visible">
+              <div className="relative h-[300px] sm:h-[380px] lg:h-[500px] w-full lg:w-4/5 ml-auto rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="/asrama.webp"
                   alt="Kegiatan Santri Utama"
                   fill
                   sizes="(max-width: 1024px) 100vw, 80vw"
-                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  loading-eager="true"
+                  className="object-cover hover:scale-105 transition-transform duration-700 "
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-black/35 to-transparent" />
               </div>
 
               <motion.div
@@ -229,14 +230,13 @@ export default function HomeClient({ articles }: HomeClientProps) {
                 whileInView={{ x: -80, opacity: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="absolute -bottom-12 left-0 h-104 w-88 lg:h-128 lg:w-md rounded-3xl overflow-hidden hidden lg:block hover:-translate-y-2 transition-transform duration-500 ">
+                className="absolute -bottom-12 left-0 h-[32rem] w-[28rem] rounded-3xl overflow-hidden hidden xl:block hover:-translate-y-2 transition-transform duration-500">
                 <Image
                   src="/santri.webp"
                   alt="Suasana Pondok"
                   fill
-                  sizes="(min-width: 1024px) 448px, 352px"
+                  sizes="448px"
                   className="object-cover"
-                  priority
                 />
               </motion.div>
             </motion.div>

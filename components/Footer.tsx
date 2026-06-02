@@ -1,14 +1,19 @@
 'use client';
 import Link from 'next/link';
 import { LINKS } from '@/utils/constant';
-import { FaFacebookF, FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
+import {
+  FaXTwitter,
+  FaFacebook,
+  FaInstagram,
+  FaYoutube,
+  FaTiktok,
+} from 'react-icons/fa6';
 
 const socialItems = [
   {
     name: 'Facebook',
     href: LINKS.contact.socialMedia.facebook,
-    icon: FaFacebookF,
+    icon: FaFacebook,
   },
   {
     name: 'Instagram',

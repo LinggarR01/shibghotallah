@@ -61,33 +61,31 @@ const socialItems = [
 
 export default function Kontak() {
   return (
-    <div className="min-h-screen bg-white w-full flex flex-col font-quicksand">
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative">
-        <div className="text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-2">
+    <div className="min-h-screen w-full overflow-x-hidden bg-white pt-16 font-quicksand">
+      <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 md:py-16 lg:px-8 lg:py-20">
+        <div className="mb-8 text-center md:mb-12">
+          <h2 className="text-center text-2xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
             Kontak & Lokasi
           </h2>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+        <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch lg:gap-8">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100">
-            <motion.h2
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-2xl font-bold text-gray-900 mb-8 border-b-2 border-emerald-100 pb-4 text-center">
+            className="w-full rounded-3xl border border-gray-100 bg-white p-4 shadow-xl sm:p-7 md:p-10">
+            <h3 className="mb-6 border-b border-emerald-100 pb-4 text-center text-xl font-bold text-gray-900 sm:text-2xl md:mb-8">
               Informasi Kontak
-            </motion.h2>
+            </h3>
 
             <motion.div
               variants={staggerContainer}
               initial="hidden"
-              animate="visible"
-              className="space-y-8">
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className="space-y-5 sm:space-y-7">
               {contactItems.map((item) => {
                 const Icon = item.icon;
 
@@ -95,16 +93,17 @@ export default function Kontak() {
                   <motion.div
                     key={item.title}
                     variants={fadeInUp}
-                    className="flex items-start">
-                    <div className="shrink-0 w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mr-6">
-                      <Icon className="w-6 h-6 text-emerald-600" />
+                    className="flex gap-4 rounded-2xl border border-gray-100 bg-gray-50/60 p-4 sm:gap-5 sm:p-5">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-100 sm:h-12 sm:w-12">
+                      <Icon className="h-5 w-5 text-emerald-600 sm:h-6 sm:w-6" />
                     </div>
 
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                    <div className="min-w-0">
+                      <h4 className="mb-1 text-base font-bold text-gray-900 sm:text-lg">
                         {item.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
+                      </h4>
+
+                      <p className="break-words text-sm leading-relaxed text-gray-600 sm:text-base">
                         {item.value}
                       </p>
                     </div>
@@ -112,38 +111,40 @@ export default function Kontak() {
                 );
               })}
 
-              <motion.div variants={fadeInUp} className="pt-2">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Sosial Media
-                </h3>
+              {socialItems.length > 0 && (
+                <motion.div variants={fadeInUp} className="pt-2">
+                  <h4 className="mb-4 text-base font-bold text-gray-900 sm:text-lg">
+                    Sosial Media
+                  </h4>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {socialItems.map((item) => {
-                    const Icon = item.icon;
+                  <div className="flex flex-wrap gap-3">
+                    {socialItems.map((item) => {
+                      const Icon = item.icon;
 
-                    return (
-                      <a
-                        key={item.title}
-                        href={item.value}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex items-center gap-3 rounded-2xl border border-gray-100 bg-white px-4 py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700">
-                        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 transition group-hover:bg-emerald-600 group-hover:text-white">
-                          <Icon className="h-4 w-4" />
-                        </span>
-                        {item.title}
-                      </a>
-                    );
-                  })}
-                </div>
-              </motion.div>
+                      return (
+                        <a
+                          key={item.title}
+                          href={item.value}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={item.title}
+                          className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-100 bg-white text-gray-700 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-emerald-600 hover:text-white sm:h-12 sm:w-12">
+                          <Icon className="h-5 w-5" />
+                        </a>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+              )}
             </motion.div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.5 }}>
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="min-h-[360px] overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-xl sm:min-h-[420px] lg:min-h-full">
             <GoogleMaps
               title="Lokasi Pondok Pesantren"
               address="Pondok Pesantren Shibghotallah Al-Islamy, Jl. Belibis V, Semper Barat, Cilincing, Jakarta Utara"

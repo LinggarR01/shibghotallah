@@ -12,8 +12,6 @@
   --font-mono: var(--font-geist-mono);
   --color-hijau: #005f02;
   --color-maroon: #e00543;
-  --font-inter: 'Inter';
-  --font-quicksand: 'Quicksand';
 }
 
 @media (prefers-color-scheme: dark) {
