@@ -117,7 +117,6 @@ export default function HomeClient({ articles }: HomeClientProps) {
 
       {/* --- ABOUT SECTION --- */}
       <motion.section
-        initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={staggerContainer}
@@ -249,7 +248,6 @@ export default function HomeClient({ articles }: HomeClientProps) {
 
           {/* News Section */}
           <motion.section
-            initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeInUp}

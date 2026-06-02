@@ -3,7 +3,6 @@ import { Geist, Geist_Mono, Inter, Quicksand } from 'next/font/google';
 import './globals.css';
 import Navbar from '../components/ui/Navbar';
 import Footer from '../components/Footer';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -74,7 +73,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <SpeedInsights />
       </body>
     </html>
   );
