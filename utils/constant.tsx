@@ -418,11 +418,11 @@ export const LINKS: SiteLinks = {
     phone: '0853-5314-5949',
     email: 'info@pondokmodernshibghtallah.com',
     socialMedia: {
-      instagram: 'https://www.instagram.com/shibghatallah',
-      facebook: 'https://www.facebook.com/shibghatallah',
-      twitter: 'https://twitter.com/shibghatallah',
-      youtube: 'https://www.youtube.com/c/Shibghotallah',
-      tiktok: 'https://www.tiktok.com/@shibghatallah',
+      instagram: 'https://www.instagram.com/pondokmodernshibghatallah/',
+      facebook: 'https://www.facebook.com/share/18dYtEnkXh/',
+      twitter: 'https://x.com/PMShibghatallah',
+      youtube: 'https://www.youtube.com/@PondokModernShibghatallah',
+      tiktok: 'https://www.tiktok.com/@pmshibghatallah',
     },
   },
 };
