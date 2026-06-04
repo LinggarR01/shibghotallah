@@ -1,5 +1,6 @@
+'use cache';
 import InformasiPendaftaran from '@/components/pendaftaran/informasi-pendaftaran/InformasiPendaftaran';
 
-export default function PendaftaranPage() {
+export default async function PendaftaranPage() {
   return <InformasiPendaftaran />;
 }

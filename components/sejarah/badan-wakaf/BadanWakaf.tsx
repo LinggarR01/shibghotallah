@@ -1,59 +1,38 @@
-'use client';
-
 import { badanWakafSections } from '@/utils/constant';
-import Link from 'next/link';
-import { motion } from 'motion/react';
-import { staggerContainer, fadeInUp } from '@/components/ui/Animations';
 
 export default function BadanWakaf() {
   return (
     <div className="min-h-screen bg-white w-full flex flex-col font-quicksand">
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={staggerContainer}
-        className="py-16 md:py-24 bg-white relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden animate-fade-in-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
-          <motion.h1
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 border-b-4 pb-2 border-emerald-700 inline-block">
+          <h1 className="animate-fade-in-up text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 border-b-4 pb-2 border-emerald-700 inline-block">
             Badan Wakaf
-          </motion.h1>
+          </h1>
 
-          <motion.div
-            variants={staggerContainer}
-            className="space-y-5 text-base md:text-lg text-gray-600 leading-relaxed">
-            <motion.p variants={fadeInUp}>
+          <div className="space-y-5 text-base md:text-lg text-gray-600 leading-relaxed stagger-container">
+            <p>
               Badan Wakaf Shibghatallah Al-Islamy merupakan unsur penting dalam
               menjaga amanah, arah perjuangan, dan keberlangsungan pendidikan
               pondok pesantren. Keberadaan badan wakaf menjadi bentuk tanggung
               jawab bersama dalam mengelola, mengembangkan, dan memajukan
               lembaga pendidikan Islam agar senantiasa memberikan manfaat bagi
               umat.
-            </motion.p>
+            </p>
 
-            <motion.p variants={fadeInUp}>
+            <p>
               Dengan semangat keikhlasan, musyawarah, dan pengabdian, Badan
               Wakaf Shibghatallah Al-Islamy berperan dalam mendukung visi pondok
               untuk membina generasi muslim yang beriman, berilmu, berakhlak
               mulia, mandiri, serta siap berkhidmat kepada agama, masyarakat,
               bangsa, dan negara.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          <motion.div
-            variants={staggerContainer}
-            className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 stagger-container">
             {badanWakafSections.map((section) => (
-              <motion.div
+              <div
                 key={section.title}
-                variants={fadeInUp}
-                whileHover={{
-                  y: -6,
-                  transition: { duration: 0.2 },
-                }}
-                className="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md">
+                className="hover-lift rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md">
                 <h2 className="text-xl font-bold text-gray-900">
                   {section.title}
                 </h2>
@@ -73,11 +52,11 @@ export default function BadanWakaf() {
                     </li>
                   ))}
                 </ol>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }

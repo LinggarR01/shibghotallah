@@ -11,13 +11,13 @@ const sintesaItems = [
 export default function Sintesa() {
   return (
     <div className="min-h-screen bg-white w-full flex flex-col font-quicksand">
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-white relative overflow-hidden animate-fade-in-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 border-b-4 pb-2 border-emerald-700 inline-block">
+          <h1 className="animate-fade-in-up text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 border-b-4 pb-2 border-emerald-700 inline-block">
             Sintesa
           </h1>
 
-          <div className="space-y-6 text-base md:text-lg text-gray-600 leading-relaxed">
+          <div className="space-y-6 text-base md:text-lg text-gray-600 leading-relaxed stagger-container">
             <p>
               Sintesa Pondok Modern Shibghatallah Al-Islamy merupakan perpaduan
               nilai-nilai pendidikan Islam yang menyatukan pembinaan ilmu,
@@ -43,12 +43,12 @@ export default function Sintesa() {
             </p>
           </div>
 
-          <div className="mt-10 rounded-3xl bg-emerald-700 p-6 md:p-8 text-white shadow-lg">
+          <div className="animate-scale-in mt-10 rounded-3xl bg-emerald-700 p-6 md:p-8 text-white shadow-lg">
             <h2 className="text-2xl font-bold">
               Unsur Pendidikan dalam Sintesa
             </h2>
 
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <div className="mt-6 grid gap-4 md:grid-cols-2 stagger-container">
               {sintesaItems.map((item, index) => (
                 <div
                   key={item}
@@ -64,15 +64,16 @@ export default function Sintesa() {
               ))}
             </div>
           </div>
-          <div className="mt-12 flex items-center justify-between border-t border-gray-200 pt-6">
+
+          <div className="animate-fade-in-up mt-12 flex items-center justify-between border-t border-gray-200 pt-6">
             <Link
               href="/sejarah/selayang-pandang"
-              className="text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
+              className="link-hover-scale text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
               ← Selayang Pandang
             </Link>
             <Link
               href="/sejarah/badan-wakaf"
-              className="text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
+              className="link-hover-scale text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
               Badan Wakaf →
             </Link>
           </div>

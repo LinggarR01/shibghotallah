@@ -1,4 +1,3 @@
-'use client';
 import Link from 'next/link';
 import { LINKS } from '@/utils/constant';
 import {
@@ -123,8 +122,7 @@ export default function Footer() {
 
         <div className="border-t border-emerald-800 mt-12 pt-8 text-center md:text-left text-emerald-200 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Pondok Modern Shibghatallah
-            Al-Islamy. All rights reserved.
+            2026 Pondok Modern Shibghatallah Al-Islamy. All rights reserved.
           </p>
         </div>
       </div>

@@ -1,9 +1,11 @@
+import { cacheLife } from 'next/cache';
 import Berita from '@/components/berita/Berita';
 import { getAllPosts } from '@/drizzle/actions/posts';
 
-export const dynamic = 'force-dynamic';
-
 export default async function BeritaPage() {
+  'use cache';
+  cacheLife('minutes');
+
   const articlesData = await getAllPosts(12);
 
   return (

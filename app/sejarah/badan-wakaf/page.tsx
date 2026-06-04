@@ -1,5 +1,6 @@
+'use cache';
 import BadanWakaf from '@/components/sejarah/badan-wakaf/BadanWakaf';
 
-export default function BadanWakafPage() {
+export default async function BadanWakafPage() {
   return <BadanWakaf />;
 }

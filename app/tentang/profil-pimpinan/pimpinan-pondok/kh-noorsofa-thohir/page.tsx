@@ -1,4 +1,5 @@
+'use cache';
 import KhNoorsofaThohir from '@/components/tentang/profil-pimpinan/pimpinan-pondok/kh-noorsofa-thohir/KHNoorsofaThohir';
-export default function KhNoorsofaThohirPage() {
+export default async function KhNoorsofaThohirPage() {
   return <KhNoorsofaThohir />;
 }

@@ -1,9 +1,5 @@
-'use client';
-
 import { LINKS } from '@/utils/constant';
-import { fadeInUp, staggerContainer } from '@/components/ui/Animations';
 import GoogleMaps from '@/components/ui/GoogleMaps';
-import { motion } from 'motion/react';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import {
   FaFacebookF,
@@ -63,36 +59,25 @@ export default function Kontak() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-white pt-16 font-quicksand">
       <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 md:py-16 lg:px-8 lg:py-20">
-        <div className="mb-8 text-center md:mb-12">
+        <div className="mb-8 text-center md:mb-12 animate-fade-in-up">
           <h2 className="text-center text-2xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
             Kontak & Lokasi
           </h2>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch lg:gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-            className="w-full overflow-hidden rounded-3xl">
+          <div className="w-full overflow-hidden rounded-3xl animate-fade-in-up">
             <h3 className="mb-6 border-b border-emerald-100 pb-4 text-center text-xl font-bold text-gray-900 sm:text-2xl md:mb-8">
               Informasi Kontak
             </h3>
 
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              className="space-y-5 sm:space-y-7">
+            <div className="space-y-5 sm:space-y-7 stagger-container">
               {contactItems.map((item) => {
                 const Icon = item.icon;
 
                 return (
-                  <motion.div
+                  <div
                     key={item.title}
-                    variants={fadeInUp}
                     className="flex gap-4 rounded-2xl border border-gray-100 bg-gray-50/60 p-4 sm:gap-5 sm:p-5">
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-100 sm:h-12 sm:w-12">
                       <Icon className="h-5 w-5 text-emerald-600 sm:h-6 sm:w-6" />
@@ -107,12 +92,12 @@ export default function Kontak() {
                         {item.value}
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
 
               {socialItems.length > 0 && (
-                <motion.div variants={fadeInUp} className="pt-2">
+                <div className="pt-2 animate-fade-in-up">
                   <h4 className="mb-4 text-base font-bold text-gray-900 sm:text-lg">
                     Sosial Media
                   </h4>
@@ -134,23 +119,18 @@ export default function Kontak() {
                       );
                     })}
                   </div>
-                </motion.div>
+                </div>
               )}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="min-h-[360px] overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-xl sm:min-h-[420px] lg:min-h-full">
+          <div className="min-h-[360px] overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-xl animate-fade-in-up sm:min-h-[420px] lg:min-h-full">
             <GoogleMaps
               title="Lokasi Pondok Pesantren"
               address="Pondok Pesantren Shibghotallah Al-Islamy, Jl. Belibis V, Semper Barat, Cilincing, Jakarta Utara"
               embedUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.9624321764495!2d106.92677857492892!3d-6.135750093851109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698b55c954cfcf%3A0x1d65a33047be229f!2sPondok%20Pesantren%20Shibghotallah%20Al%20Islamy!5e0!3m2!1sen!2sus!4v1779818031933!5m2!1sen!2sus"
             />
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

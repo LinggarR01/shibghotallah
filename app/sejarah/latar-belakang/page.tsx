@@ -1,6 +1,6 @@
-'use client';
+'use cache';
 import LatarBelakang from '@/components/sejarah/latar-belakang/LatarBelakang';
 
-export default function LatarBelakangPage() {
+export default async function LatarBelakangPage() {
   return <LatarBelakang />;
 }

@@ -1,6 +1,7 @@
 import { db } from '@/lib/db';
 import { posts, categories } from '@/drizzle/schema';
 import { and, desc, eq } from 'drizzle-orm';
+import { cacheLife, cacheTag } from 'next/cache';
 
 export type Article = {
   id: number;
@@ -43,6 +44,11 @@ export async function getAllPosts(limit = 10): Promise<Article[]> {
 }
 
 export async function getPostBySlug(slug: string): Promise<Article | null> {
+  'use cache';
+  cacheLife('minutes');
+  cacheTag('posts');
+  cacheTag(`post-${slug}`);
+
   const result = await db
     .select({
       id: posts.id,
@@ -70,4 +76,17 @@ export async function getPostBySlug(slug: string): Promise<Article | null> {
     createdAt: post.createdAt ? post.createdAt.toISOString() : null,
     publishedAt: post.publishedAt ? post.publishedAt.toISOString() : null,
   };
+}
+
+export async function getPublishedPostSlugs(): Promise<{ slug: string }[]> {
+  'use cache';
+
+  const result = await db
+    .select({
+      slug: posts.slug,
+    })
+    .from(posts)
+    .where(eq(posts.status, 'published'));
+
+  return result;
 }

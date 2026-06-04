@@ -1,20 +1,19 @@
 export default function TujuanPendidikan() {
   return (
-    <div className="min-h-screen bg-white w-full flex flex-col font-quicksand ">
-      <section className="py-24 bg-white relative overflow-hidden">
+    <div className="min-h-screen bg-white w-full flex flex-col font-quicksand">
+      <section className="py-24 bg-white relative overflow-hidden animate-fade-in-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
-          {/* Judul dengan border-bottom responsif */}
           <div className="mb-4 md:mb-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 border-b-4 pb-2 border-emerald-700 inline-block">
+            <h1 className="animate-fade-in-up text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 border-b-4 pb-2 border-emerald-700 inline-block">
               Tujuan Pendidikan
             </h1>
           </div>
 
-          <p className="text-base md:text-xl text-gray-700 mb-4 italic leading-relaxed">
+          <p className="animate-fade-in-up text-base md:text-xl text-gray-700 mb-4 italic leading-relaxed">
             Tujuan dari pondok adalah sebagai berikut:
           </p>
 
-          <ul className="list-disc pl-5 space-y-4 text-base md:text-xl text-black leading-relaxed mb-12 md:mb-16">
+          <ul className="list-disc pl-5 space-y-4 text-base md:text-xl text-black leading-relaxed mb-12 md:mb-16 stagger-container">
             <li className="font-bold pl-2">
               Membentuk insan dengan kepribadian Islami dengan menjunjung tinggi
               dan mengamalkan ajaran Islam.
@@ -28,8 +27,7 @@ export default function TujuanPendidikan() {
             </li>
           </ul>
 
-          {/* Box Container */}
-          <div className="bg-emerald-50 p-5 md:p-10 rounded-2xl border-l-[6px] md:border-l-12 border-emerald-700 shadow-sm">
+          <div className="animate-scale-in bg-emerald-50 p-5 md:p-10 rounded-2xl border-l-[6px] md:border-l-12 border-emerald-700 shadow-sm">
             <p className="text-gray-800 text-sm md:text-lg mb-8 leading-relaxed text-justify md:text-left">
               Pondok Modern bukanlah lembaga yang eksklusif yang tidak
               berinteraksi dengan masyarakat. Pondok Modern dapat menjadi magnet
@@ -42,8 +40,7 @@ export default function TujuanPendidikan() {
               adalah:
             </p>
 
-            {/* Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-6 stagger-container">
               <div className="bg-white/50 p-4 rounded-lg">
                 <h3 className="font-bold text-emerald-900 text-sm md:text-base uppercase tracking-wider mb-3 flex items-center">
                   <span className="bg-emerald-700 text-white w-6 h-6 rounded-full flex items-center justify-center mr-2 text-xs">
@@ -76,8 +73,7 @@ export default function TujuanPendidikan() {
             </div>
           </div>
 
-          {/* Footer teks */}
-          <p className="mt-12 md:mt-16 text-xs md:text-sm text-gray-500 italic text-center max-w-3xl mx-auto leading-relaxed">
+          <p className="animate-fade-in-up mt-12 md:mt-16 text-xs md:text-sm text-gray-500 italic text-center max-w-3xl mx-auto leading-relaxed">
             Uraian lebih lanjut dari semua program Pesantren Shibghatallah
             Al-Islamy baik akademik maupun kegiatan lain akan dijelaskan lebih
             terperinci dalam panduan kurikulum dan akademis Pesantren

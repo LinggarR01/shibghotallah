@@ -1,5 +1,6 @@
+'use cache';
 import SelayangPandang from '@/components/sejarah/selayang-pandang/SelayangPandang';
 
-export default function SelayangPandangPage() {
+export default async function SelayangPandangPage() {
   return <SelayangPandang />;
 }

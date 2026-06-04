@@ -1,22 +1,15 @@
-'use client';
 import Link from 'next/link';
-import { motion } from 'motion/react';
-import { staggerContainer } from '@/components/ui/Animations';
 
 export default function LatarBelakang() {
   return (
     <div className="min-h-screen bg-white w-full flex flex-col font-quicksand">
-      <motion.section
-        initial="hidden"
-        animate="visible"
-        variants={staggerContainer}
-        className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-white relative overflow-hidden animate-fade-in-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 border-b-4 pb-2 border-emerald-700 inline-block">
+          <h1 className="animate-fade-in-up text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 border-b-4 pb-2 border-emerald-700 inline-block">
             Latar Belakang
           </h1>
 
-          <div className="space-y-5 text-base md:text-xl text-black leading-relaxed">
+          <div className="space-y-5 text-base md:text-xl text-black leading-relaxed stagger-container">
             <p>
               Islam yang memberkahi adalah Islam yang diamalkan dalam kehidupan
               nyata. Iman bukan hanya berhenti pada konsep dan teori, tetapi
@@ -64,15 +57,16 @@ export default function LatarBelakang() {
               serta kepedulian untuk berkhidmat kepada masyarakat dan umat.
             </p>
           </div>
-          <div className="mt-12 flex items-center justify-end border-t border-gray-200 pt-6">
+
+          <div className="animate-fade-in-up mt-12 flex items-center justify-end border-t border-gray-200 pt-6">
             <Link
               href="/sejarah/selayang-pandang"
-              className="text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
+              className="link-hover-scale text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
               Selayang Pandang →
             </Link>
           </div>
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }
