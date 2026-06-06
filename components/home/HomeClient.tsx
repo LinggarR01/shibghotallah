@@ -4,6 +4,7 @@ import News from '@/components/ui/News';
 import Card from '@/components/ui/Card';
 import { falsafah } from '../../utils/constant';
 import { Article } from '@/drizzle/actions/posts';
+import PopupIklan from './../ui/PopupIklan';
 
 interface HomeClientProps {
   articles: Article[];
@@ -12,6 +13,8 @@ interface HomeClientProps {
 export default function HomeClient({ articles }: HomeClientProps) {
   return (
     <div className="min-h-screen bg-white w-full flex flex-col font-quicksand">
+      <PopupIklan />
+
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden animate-fade-in-up">
         {/* Background Image & Overlay */}
@@ -51,7 +54,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center px-4">
             <Link
-              href="https://www.google.com"
+              href="/pendaftaran/informasi-pendaftaran"
               className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-emerald-950 px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:-translate-y-1 block text-center">
               Daftar Sekarang
             </Link>
