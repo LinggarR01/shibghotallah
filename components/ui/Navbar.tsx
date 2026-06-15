@@ -253,7 +253,7 @@ const Navbar = () => {
                       Informasi Pendaftaran
                     </Link>
                     <Link
-                      href="/pendaftaran/informasi-pendaftaran"
+                      href="https://pendaftaran.pondokmodernshibghatallah.com/"
                       onClick={closeMenus}
                       className="block px-4 py-2 text-sm text-black hover:text-white bg-white hover:bg-emerald-600">
                       Pendaftaran
@@ -518,7 +518,7 @@ const Navbar = () => {
                         }}
                         className="pl-4 overflow-hidden">
                         <Link
-                          href="/pendaftaran/informasi-pendaftaran"
+                          href="https://pendaftaran.pondokmodernshibghatallah.com/"
                           onClick={closeMenus}
                           className="block px-3 py-2 text-sm text-white active:bg-white active:text-hijau rounded-2xl">
                           Pendaftaran
