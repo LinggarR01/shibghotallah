@@ -5,14 +5,29 @@ import { slugify } from '@/lib/utils';
 
 export const POST_IMAGE_FORMAT_ERROR = 'Format gambar harus JPG, JPEG, atau PNG.';
 export const POST_IMAGE_SIZE_ERROR = 'Ukuran gambar maksimal 2 MB.';
+export const POST_IMAGE_SAVE_ERROR =
+  'Gagal menyimpan gambar. Pastikan folder upload dapat ditulis server.';
 
 const MAX_POST_IMAGE_SIZE = 2 * 1024 * 1024;
 const POST_UPLOAD_PUBLIC_PATH = '/uploads/posts';
-const ALLOWED_MIME_TYPES = new Set(['image/jpeg', 'image/jpg', 'image/png']);
+const ALLOWED_MIME_TYPES = new Set(['image/jpeg', 'image/png']);
 const ALLOWED_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png']);
 
 function getUploadDir() {
-  return path.join(process.cwd(), 'public', 'uploads', 'posts');
+  const configuredUploadDir = process.env.UPLOAD_DIR?.trim();
+
+  if (configuredUploadDir) {
+    return path.isAbsolute(configuredUploadDir)
+      ? path.join(/*turbopackIgnore: true*/ configuredUploadDir)
+      : path.join(/*turbopackIgnore: true*/ process.cwd(), configuredUploadDir);
+  }
+
+  return path.join(
+    /*turbopackIgnore: true*/ process.cwd(),
+    'public',
+    'uploads',
+    'posts',
+  );
 }
 
 function getExtension(filename: string) {
@@ -24,10 +39,10 @@ function isFile(value: FormDataEntryValue | null): value is File {
 }
 
 function getPostImageFile(formData: FormData) {
-  const value = formData.get('coverImage');
+  const value = formData.get('coverImage') ?? formData.get('image');
 
   if (!isFile(value)) return null;
-  if (value.size === 0 && !value.name) return null;
+  if (value.size === 0) return null;
 
   return value;
 }
@@ -36,14 +51,12 @@ function validatePostImage(file: File) {
   const extension = getExtension(file.name);
 
   if (file.size > MAX_POST_IMAGE_SIZE) {
-    return POST_IMAGE_SIZE_ERROR;
+    throw new Error(POST_IMAGE_SIZE_ERROR);
   }
 
   if (!ALLOWED_MIME_TYPES.has(file.type) || !ALLOWED_EXTENSIONS.has(extension)) {
-    return POST_IMAGE_FORMAT_ERROR;
+    throw new Error(POST_IMAGE_FORMAT_ERROR);
   }
-
-  return null;
 }
 
 function createSafeFilename(slug: string, extension: string) {
@@ -53,34 +66,56 @@ function createSafeFilename(slug: string, extension: string) {
   return `${safeBase}-${suffix}${extension}`;
 }
 
-export async function savePostImageFromFormData(
-  formData: FormData,
-  slug: string,
-) {
-  const file = getPostImageFile(formData);
-
+export async function savePostImage(file: File | null, slug: string) {
   if (!file) {
-    return { imagePath: null, error: null };
+    return null;
   }
 
-  const validationError = validatePostImage(file);
-
-  if (validationError) {
-    return { imagePath: null, error: validationError };
-  }
+  validatePostImage(file);
 
   const extension = getExtension(file.name);
   const filename = createSafeFilename(slug, extension);
   const uploadDir = getUploadDir();
   const targetPath = path.join(uploadDir, filename);
 
-  await mkdir(uploadDir, { recursive: true });
-  await writeFile(targetPath, Buffer.from(await file.arrayBuffer()));
+  try {
+    console.info('[post-image-upload]', {
+      cwd: process.cwd(),
+      uploadDir,
+      filename,
+    });
 
-  return {
-    imagePath: `${POST_UPLOAD_PUBLIC_PATH}/${filename}`,
-    error: null,
-  };
+    await mkdir(uploadDir, { recursive: true });
+    await writeFile(targetPath, Buffer.from(await file.arrayBuffer()));
+  } catch (error) {
+    console.error('[post-image-upload] Failed to save image', {
+      cwd: process.cwd(),
+      uploadDir,
+      filename,
+      error,
+    });
+
+    throw new Error(POST_IMAGE_SAVE_ERROR);
+  }
+
+  return `${POST_UPLOAD_PUBLIC_PATH}/${filename}`;
+}
+
+export async function savePostImageFromFormData(
+  formData: FormData,
+  slug: string,
+) {
+  try {
+    return {
+      imagePath: await savePostImage(getPostImageFile(formData), slug),
+      error: null,
+    };
+  } catch (error) {
+    return {
+      imagePath: null,
+      error: error instanceof Error ? error.message : POST_IMAGE_SAVE_ERROR,
+    };
+  }
 }
 
 export async function deleteUploadedPostImage(imagePath: string | null) {

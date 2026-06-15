@@ -27,7 +27,7 @@ type PostFormValues = {
 const IMAGE_FORMAT_ERROR = 'Format gambar harus JPG, JPEG, atau PNG.';
 const IMAGE_SIZE_ERROR = 'Ukuran gambar maksimal 2 MB.';
 const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
-const ALLOWED_IMAGE_TYPES = new Set(['image/jpeg', 'image/jpg', 'image/png']);
+const ALLOWED_IMAGE_TYPES = new Set(['image/jpeg', 'image/png']);
 const ALLOWED_IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png']);
 
 function validateImageFile(file: File | null) {
