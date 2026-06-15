@@ -9,7 +9,6 @@ if (!databaseUrl) {
 }
 
 declare global {
-  // eslint-disable-next-line no-var
   var mysqlPool: mysql.Pool | undefined;
 }
 

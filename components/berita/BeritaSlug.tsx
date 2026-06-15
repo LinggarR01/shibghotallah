@@ -25,7 +25,7 @@ export default function BeritaSlug({ post }: BeritaSlugProps) {
           </h1>
 
           {post.image && (
-            <div className="animate-scale-in relative w-full h-100 mb-10 rounded-2xl overflow-hidden shadow-lg">
+            <div className="animate-scale-in relative mb-10 h-80 w-full overflow-hidden rounded-2xl shadow-lg sm:h-96">
               <Image
                 src={post.image}
                 alt={post.title}

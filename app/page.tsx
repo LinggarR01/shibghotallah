@@ -1,10 +1,9 @@
-import { cacheLife } from 'next/cache';
+import { connection } from 'next/server';
 import HomeClient from '@/components/home/HomeClient';
 import { getAllPosts } from '@/drizzle/actions/posts';
 
 export default async function HomePage() {
-  'use cache';
-  cacheLife('minutes');
+  await connection();
 
   const articles = await getAllPosts(3);
 

@@ -1,7 +1,7 @@
-import { cacheLife } from 'next/cache';
 import { notFound } from 'next/navigation';
+import { connection } from 'next/server';
 import BeritaSlug from '@/components/berita/BeritaSlug';
-import { getPostBySlug, getPublishedPostSlugs } from '@/drizzle/actions/posts';
+import { getPostBySlug } from '@/drizzle/actions/posts';
 
 type BeritaDetailPageProps = {
   params: Promise<{
@@ -9,22 +9,10 @@ type BeritaDetailPageProps = {
   }>;
 };
 
-export async function generateStaticParams() {
-  'use cache';
-  cacheLife('minutes');
-
-  const posts = await getPublishedPostSlugs();
-
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
 export default async function BeritaDetailPage({
   params,
 }: BeritaDetailPageProps) {
-  'use cache';
-  cacheLife('minutes');
+  await connection();
 
   const { slug } = await params;
 

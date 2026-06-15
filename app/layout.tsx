@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Inter, Quicksand } from 'next/font/google';
+import { Quicksand } from 'next/font/google';
+import { Suspense } from 'react';
 import './globals.css';
-import Navbar from '../components/ui/Navbar';
-import Footer from '../components/Footer';
+import AppChrome from '@/components/AppChrome';
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -68,11 +68,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${quicksand.variable} antialiased`}>
-        <Navbar />
-        <main className="flex w-full flex-col items-center justify-between bg-dark sm:items-start">
-          {children}
-        </main>
-        <Footer />
+        <Suspense
+          fallback={
+            <main className="min-h-screen w-full bg-white" aria-hidden="true" />
+          }>
+          <AppChrome>{children}</AppChrome>
+        </Suspense>
       </body>
     </html>
   );

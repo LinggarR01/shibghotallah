@@ -1,10 +1,9 @@
-import { cacheLife } from 'next/cache';
+import { connection } from 'next/server';
 import Berita from '@/components/berita/Berita';
 import { getAllPosts } from '@/drizzle/actions/posts';
 
 export default async function BeritaPage() {
-  'use cache';
-  cacheLife('minutes');
+  await connection();
 
   const articlesData = await getAllPosts(12);
 
