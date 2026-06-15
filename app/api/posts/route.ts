@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/lib/db';
-import { posts, categories } from '@/drizzle/schema';
-import { and, desc, eq } from 'drizzle-orm';
+import { getAllPosts, getPostBySlug } from '@/drizzle/actions/posts';
 
 const handleError = (error: unknown) => {
   const message =
@@ -21,32 +19,16 @@ export async function GET(req: Request) {
     const safeLimit = Number.isFinite(limit) && limit > 0 ? limit : 10;
 
     if (slug) {
-      const singlePost = await db
-        .select({
-          id: posts.id,
-          title: posts.title,
-          slug: posts.slug,
-          excerpt: posts.excerpt,
-          content: posts.content,
-          image: posts.image,
-          status: posts.status,
-          categoryName: categories.name,
-          createdAt: posts.createdAt,
-          publishedAt: posts.publishedAt,
-        })
-        .from(posts)
-        .leftJoin(categories, eq(posts.categoryId, categories.id))
-        .where(and(eq(posts.slug, slug), eq(posts.status, 'published')))
-        .limit(1);
+      const singlePost = await getPostBySlug(slug);
 
-      if (singlePost.length === 0) {
+      if (!singlePost) {
         return NextResponse.json(
           { error: 'Post tidak ditemukan' },
           { status: 404 },
         );
       }
 
-      return NextResponse.json(singlePost[0], {
+      return NextResponse.json(singlePost, {
         headers: {
           'Cache-Control':
             'public, s-maxage=3600, stale-while-revalidate=86400',
@@ -54,24 +36,7 @@ export async function GET(req: Request) {
       });
     }
 
-    const allPosts = await db
-      .select({
-        id: posts.id,
-        title: posts.title,
-        slug: posts.slug,
-        excerpt: posts.excerpt,
-        content: posts.content,
-        image: posts.image,
-        status: posts.status,
-        categoryName: categories.name,
-        createdAt: posts.createdAt,
-        publishedAt: posts.publishedAt,
-      })
-      .from(posts)
-      .leftJoin(categories, eq(posts.categoryId, categories.id))
-      .where(eq(posts.status, 'published'))
-      .orderBy(desc(posts.publishedAt), desc(posts.id))
-      .limit(safeLimit);
+    const allPosts = await getAllPosts(Math.min(safeLimit, 24));
 
     return NextResponse.json(allPosts, {
       headers: {

@@ -3,12 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-family-quicksand:
+    'Quicksand', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-family-quicksand);
+  --font-quicksand: var(--font-family-quicksand);
   --font-mono: var(--font-geist-mono);
   --color-hijau: #005f02;
   --color-maroon: #e00543;
@@ -24,7 +28,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-quicksand), sans-serif;
+  font-family: var(--font-family-quicksand);
 }
 
 /* Animation */

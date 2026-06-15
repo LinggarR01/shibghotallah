@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath, revalidateTag } from 'next/cache';
 import { eq } from 'drizzle-orm';
 import { categories } from '@/drizzle/schema';
 import { db } from '@/lib/db';
@@ -23,6 +24,16 @@ function forbidden() {
 
 function badRequest(message: string) {
   return NextResponse.json({ error: message }, { status: 400 });
+}
+
+function revalidatePublicContent() {
+  revalidateTag('categories', 'max');
+  revalidateTag('posts', 'max');
+  revalidatePath('/');
+  revalidatePath('/berita');
+  revalidatePath('/dashboard');
+  revalidatePath('/dashboard/categories');
+  revalidatePath('/dashboard/posts');
 }
 
 function readString(value: unknown) {
@@ -84,6 +95,8 @@ export async function POST(req: Request) {
       .values(parsed.values)
       .$returningId();
 
+    revalidatePublicContent();
+
     return NextResponse.json({ id: result[0]?.id }, { status: 201 });
   } catch {
     return NextResponse.json(
@@ -135,6 +148,8 @@ export async function PUT(req: Request) {
       .set(parsed.values)
       .where(eq(categories.id, id));
 
+    revalidatePublicContent();
+
     return NextResponse.json({ success: true, id });
   } catch {
     return NextResponse.json(
@@ -172,6 +187,8 @@ export async function DELETE(req: Request) {
     }
 
     await db.delete(categories).where(eq(categories.id, categoryId));
+
+    revalidatePublicContent();
 
     return NextResponse.json({ success: true, id: categoryId });
   } catch {

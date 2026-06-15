@@ -17,6 +17,10 @@ export type Article = {
 };
 
 export async function getAllPosts(limit = 10): Promise<Article[]> {
+  'use cache';
+  cacheLife('hours');
+  cacheTag('posts');
+
   const result = await db
     .select({
       id: posts.id,
@@ -45,7 +49,7 @@ export async function getAllPosts(limit = 10): Promise<Article[]> {
 
 export async function getPostBySlug(slug: string): Promise<Article | null> {
   'use cache';
-  cacheLife('minutes');
+  cacheLife('hours');
   cacheTag('posts');
   cacheTag(`post-${slug}`);
 
@@ -80,6 +84,8 @@ export async function getPostBySlug(slug: string): Promise<Article | null> {
 
 export async function getPublishedPostSlugs(): Promise<{ slug: string }[]> {
   'use cache';
+  cacheLife('hours');
+  cacheTag('posts');
 
   const result = await db
     .select({

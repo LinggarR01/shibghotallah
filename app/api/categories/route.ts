@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/lib/db';
-import { categories } from '@/drizzle/schema';
+import { getPublicCategories } from '@/lib/cms-data';
 
 const handleError = (error: unknown) => {
   const message =
@@ -12,7 +11,7 @@ const handleError = (error: unknown) => {
 // GET public: Mengambil semua kategori
 export async function GET() {
   try {
-    const allCategories = await db.select().from(categories);
+    const allCategories = await getPublicCategories();
 
     return NextResponse.json(allCategories, {
       headers: {

@@ -1,10 +1,7 @@
-import { connection } from 'next/server';
 import Berita from '@/components/berita/Berita';
 import { getAllPosts } from '@/drizzle/actions/posts';
 
 export default async function BeritaPage() {
-  await connection();
-
   const articlesData = await getAllPosts(12);
 
   return (

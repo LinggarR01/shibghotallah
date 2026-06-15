@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
-import { connection } from 'next/server';
 import BeritaSlug from '@/components/berita/BeritaSlug';
-import { getPostBySlug } from '@/drizzle/actions/posts';
+import { getPostBySlug, getPublishedPostSlugs } from '@/drizzle/actions/posts';
 
 type BeritaDetailPageProps = {
   params: Promise<{
@@ -12,8 +11,6 @@ type BeritaDetailPageProps = {
 export default async function BeritaDetailPage({
   params,
 }: BeritaDetailPageProps) {
-  await connection();
-
   const { slug } = await params;
 
   const post = await getPostBySlug(slug);
@@ -23,4 +20,12 @@ export default async function BeritaDetailPage({
   }
 
   return <BeritaSlug post={post} />;
+}
+
+export async function generateStaticParams() {
+  const slugs = await getPublishedPostSlugs();
+
+  return slugs.map((post) => ({
+    slug: post.slug,
+  }));
 }

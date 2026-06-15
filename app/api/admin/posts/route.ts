@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath, revalidateTag } from 'next/cache';
 import { eq } from 'drizzle-orm';
 import { posts } from '@/drizzle/schema';
 import { db } from '@/lib/db';
@@ -24,6 +25,19 @@ function unauthorized() {
 
 function badRequest(message: string) {
   return NextResponse.json({ error: message }, { status: 400 });
+}
+
+function revalidatePublicPosts(slug?: string | null) {
+  revalidateTag('posts', 'max');
+  revalidatePath('/');
+  revalidatePath('/berita');
+  revalidatePath('/dashboard');
+  revalidatePath('/dashboard/posts');
+
+  if (slug) {
+    revalidateTag(`post-${slug}`, 'max');
+    revalidatePath(`/berita/${slug}`);
+  }
 }
 
 function readString(value: unknown) {
@@ -157,6 +171,10 @@ export async function POST(req: Request) {
       throw new Error('insert_failed');
     }
 
+    revalidatePublicPosts(
+      parsed.values.status === 'published' ? parsed.values.slug : null,
+    );
+
     return NextResponse.json({ id: result[0]?.id }, { status: 201 });
   } catch {
     return NextResponse.json(
@@ -184,6 +202,8 @@ export async function PUT(req: Request) {
         id: posts.id,
         userId: posts.userId,
         image: posts.image,
+        slug: posts.slug,
+        status: posts.status,
         publishedAt: posts.publishedAt,
       })
       .from(posts)
@@ -240,6 +260,13 @@ export async function PUT(req: Request) {
       await deleteUploadedPostImage(existingPost.image).catch(() => undefined);
     }
 
+    revalidatePublicPosts(
+      existingPost.status === 'published' ? existingPost.slug : null,
+    );
+    revalidatePublicPosts(
+      parsed.values.status === 'published' ? parsed.values.slug : null,
+    );
+
     return NextResponse.json({ success: true, id });
   } catch {
     return NextResponse.json(
@@ -266,6 +293,8 @@ export async function DELETE(req: Request) {
       .select({
         id: posts.id,
         userId: posts.userId,
+        slug: posts.slug,
+        status: posts.status,
       })
       .from(posts)
       .where(eq(posts.id, postId))
@@ -283,6 +312,10 @@ export async function DELETE(req: Request) {
     }
 
     await db.delete(posts).where(eq(posts.id, postId));
+
+    revalidatePublicPosts(
+      existingPost.status === 'published' ? existingPost.slug : null,
+    );
 
     return NextResponse.json({ success: true, id: postId });
   } catch {

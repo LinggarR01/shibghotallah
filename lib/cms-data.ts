@@ -12,6 +12,7 @@ import {
   or,
   SQL,
 } from 'drizzle-orm';
+import { cacheLife, cacheTag } from 'next/cache';
 
 export type PostStatus = 'draft' | 'published' | 'archived';
 
@@ -194,6 +195,22 @@ export async function getCategoryOptions() {
       id: categories.id,
       name: categories.name,
       slug: categories.slug,
+    })
+    .from(categories)
+    .orderBy(asc(categories.name));
+}
+
+export async function getPublicCategories() {
+  'use cache';
+  cacheLife('hours');
+  cacheTag('categories');
+
+  return db
+    .select({
+      id: categories.id,
+      name: categories.name,
+      slug: categories.slug,
+      description: categories.description,
     })
     .from(categories)
     .orderBy(asc(categories.name));

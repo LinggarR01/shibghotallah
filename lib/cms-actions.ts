@@ -1,7 +1,7 @@
 'use server';
 
 import bcrypt from 'bcryptjs';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { eq } from 'drizzle-orm';
 import { categories, posts, users } from '@/drizzle/schema';
@@ -33,6 +33,18 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const REQUIRED_FIELDS_ERROR = 'Mohon lengkapi data yang wajib diisi.';
 const DUPLICATE_SLUG_ERROR = 'Slug sudah digunakan. Silakan gunakan slug lain.';
 const PERMISSION_ERROR = 'Anda tidak memiliki izin untuk melakukan aksi ini.';
+
+function revalidatePublicPosts(slug?: string | null) {
+  revalidateTag('posts', 'max');
+  revalidateTag('categories', 'max');
+  revalidatePath('/');
+  revalidatePath('/berita');
+
+  if (slug) {
+    revalidateTag(`post-${slug}`, 'max');
+    revalidatePath(`/berita/${slug}`);
+  }
+}
 
 function getString(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -190,7 +202,7 @@ export async function createPostAction(
 
   revalidatePath('/dashboard');
   revalidatePath('/dashboard/posts');
-  revalidatePath('/berita');
+  revalidatePublicPosts(parsed.values.status === 'published' ? parsed.values.slug : null);
 
   if (!insertedId) {
     redirect('/dashboard/posts?toast=article-created');
@@ -210,6 +222,8 @@ export async function updatePostAction(
       id: posts.id,
       userId: posts.userId,
       image: posts.image,
+      slug: posts.slug,
+      status: posts.status,
       publishedAt: posts.publishedAt,
     })
     .from(posts)
@@ -265,7 +279,12 @@ export async function updatePostAction(
   revalidatePath('/dashboard');
   revalidatePath('/dashboard/posts');
   revalidatePath(`/dashboard/posts/${id}`);
-  revalidatePath('/berita');
+  revalidatePublicPosts(
+    existingPost.status === 'published' ? existingPost.slug : null,
+  );
+  revalidatePublicPosts(
+    parsed.values.status === 'published' ? parsed.values.slug : null,
+  );
 
   redirect(`/dashboard/posts/${id}?toast=article-updated`);
 }
@@ -276,6 +295,8 @@ export async function deletePostAction(id: number) {
     .select({
       id: posts.id,
       userId: posts.userId,
+      slug: posts.slug,
+      status: posts.status,
     })
     .from(posts)
     .where(eq(posts.id, id))
@@ -297,7 +318,9 @@ export async function deletePostAction(id: number) {
 
   revalidatePath('/dashboard');
   revalidatePath('/dashboard/posts');
-  revalidatePath('/berita');
+  revalidatePublicPosts(
+    existingPost.status === 'published' ? existingPost.slug : null,
+  );
   redirect('/dashboard/posts?toast=article-deleted');
 }
 
@@ -313,6 +336,8 @@ export async function updatePostStatusAction(id: number, status: string) {
     .select({
       id: posts.id,
       userId: posts.userId,
+      slug: posts.slug,
+      status: posts.status,
       publishedAt: posts.publishedAt,
     })
     .from(posts)
@@ -345,7 +370,11 @@ export async function updatePostStatusAction(id: number, status: string) {
   revalidatePath('/dashboard');
   revalidatePath('/dashboard/posts');
   revalidatePath(`/dashboard/posts/${id}`);
-  revalidatePath('/berita');
+  revalidatePublicPosts(
+    existingPost.status === 'published' || parsedStatus === 'published'
+      ? existingPost.slug
+      : null,
+  );
   redirect(
     `/dashboard/posts?toast=${
       parsedStatus === 'published' ? 'article-published' : 'article-archived'
@@ -394,6 +423,7 @@ export async function createCategoryAction(
 
   revalidatePath('/dashboard');
   revalidatePath('/dashboard/categories');
+  revalidatePublicPosts();
   redirect('/dashboard/categories?toast=category-created');
 }
 
@@ -424,6 +454,7 @@ export async function updateCategoryAction(
 
   revalidatePath('/dashboard');
   revalidatePath('/dashboard/categories');
+  revalidatePublicPosts();
   redirect('/dashboard/categories?toast=category-updated');
 }
 
@@ -443,5 +474,6 @@ export async function deleteCategoryAction(id: number) {
   revalidatePath('/dashboard');
   revalidatePath('/dashboard/categories');
   revalidatePath('/dashboard/posts');
+  revalidatePublicPosts();
   redirect('/dashboard/categories?toast=category-deleted');
 }

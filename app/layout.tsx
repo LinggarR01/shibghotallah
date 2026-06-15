@@ -1,14 +1,7 @@
 import type { Metadata } from 'next';
-import { Quicksand } from 'next/font/google';
 import { Suspense } from 'react';
 import './globals.css';
 import AppChrome from '@/components/AppChrome';
-
-const quicksand = Quicksand({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-quicksand',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pondokmodernshibghatallah.com'),
@@ -67,7 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${quicksand.variable} antialiased`}>
+      <body className="antialiased">
         <Suspense
           fallback={
             <main className="min-h-screen w-full bg-white" aria-hidden="true" />
