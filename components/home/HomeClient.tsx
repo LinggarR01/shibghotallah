@@ -4,7 +4,7 @@ import News from '@/components/ui/News';
 import Card from '@/components/ui/Card';
 import { falsafah } from '../../utils/constant';
 import { Article } from '@/drizzle/actions/posts';
-import PopupIklan from './../ui/PopupIklan';
+import PopupIklan2 from './../ui/PopupIklan-2';
 
 interface HomeClientProps {
   articles: Article[];
@@ -13,7 +13,7 @@ interface HomeClientProps {
 export default function HomeClient({ articles }: HomeClientProps) {
   return (
     <div className="min-h-screen bg-white w-full flex flex-col font-quicksand">
-      <PopupIklan />
+      <PopupIklan2 />
 
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden animate-fade-in-up">
