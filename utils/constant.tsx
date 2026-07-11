@@ -177,7 +177,7 @@ export const falsafah: Falsafah[] = [
     title: 'Sintesa',
     description:
       'Integrasi totalitas kehidupan pesantren yang membentuk pribadi mandiri, beradab, dan disiplin dalam ekosistem pendidikan 24 jam.',
-    link: '/tentang/falsafah/sintesa',
+    link: '/sejarah/sintesa',
     icon: (
       <svg
         className="w-7 h-7"

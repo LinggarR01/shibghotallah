@@ -32,6 +32,7 @@ export default function Moto() {
             <div className="mt-12 flex items-center justify-end border-t border-gray-200 pt-6">
               <Link
                 href="/tentang/falsafah/panca-jangka"
+                prefetch={false}
                 className="text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900 hover:scale-105 inline-block">
                 Panca Jangka →
               </Link>

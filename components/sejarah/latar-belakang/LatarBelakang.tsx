@@ -61,6 +61,7 @@ export default function LatarBelakang() {
           <div className="animate-fade-in-up mt-12 flex items-center justify-end border-t border-gray-200 pt-6">
             <Link
               href="/sejarah/selayang-pandang"
+              prefetch={false}
               className="link-hover-scale text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
               Selayang Pandang →
             </Link>

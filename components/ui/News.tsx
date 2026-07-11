@@ -57,6 +57,7 @@ export default function News({ articles }: { articles: Article[] }) {
                 </p>
                 <Link
                   href={`/berita/${article.slug}`}
+                  prefetch={false}
                   className="text-emerald-600 font-semibold hover:text-emerald-700 transition-colors duration-300 flex items-center ">
                   Baca Selengkapnya
                   <svg

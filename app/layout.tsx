@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import './globals.css';
 import AppChrome from '@/components/AppChrome';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/ui/Navbar';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pondokmodernshibghatallah.com'),
@@ -24,9 +26,7 @@ export const metadata: Metadata = {
   ],
 
   icons: {
-    icon: '/logo.webp',
-    shortcut: '/logo.webp',
-    apple: '/logo.webp',
+    icon: '/favicon.ico',
   },
 
   openGraph: {
@@ -65,7 +65,9 @@ export default function RootLayout({
           fallback={
             <main className="min-h-screen w-full bg-white" aria-hidden="true" />
           }>
-          <AppChrome>{children}</AppChrome>
+          <AppChrome siteHeader={<Navbar />} siteFooter={<Footer />}>
+            {children}
+          </AppChrome>
         </Suspense>
       </body>
     </html>

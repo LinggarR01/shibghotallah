@@ -19,6 +19,7 @@ export default function Card({ content }: { content: Falsafah[] }) {
           </p>
           <Link
             href={item.link}
+            prefetch={false}
             className="mt-4 text-emerald-700 font-bold hover:text-emerald-500 transition-colors flex items-center group text-sm md:text-base">
             Pelajari Lebih Lanjut
             <svg

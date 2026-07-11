@@ -100,6 +100,7 @@ export default function PopupIklan2() {
         <div className="flex flex-col gap-2.5 px-5 pb-5 sm:flex-row">
           <Link
             href="/pendaftaran/informasi-pendaftaran"
+            prefetch={false}
             onClick={handleClose}
             className="flex-1 rounded-xl bg-emerald-600 px-4 py-2.5 text-center text-sm font-bold text-white transition hover:bg-emerald-500 active:scale-95">
             Informasi Pendaftaran

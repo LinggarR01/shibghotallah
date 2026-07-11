@@ -110,6 +110,7 @@ function MenuLink({
   return (
     <Link
       href={item.href}
+      prefetch={item.external ? undefined : false}
       className={className}
       onClick={onClick}
       target={item.external ? '_blank' : undefined}
@@ -249,7 +250,11 @@ export default function Navbar() {
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
           <div className="flex shrink-0 items-center px-4 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]">
-            <Link href="/" className="flex items-center gap-3" onClick={closeMenus}>
+            <Link
+              href="/"
+              prefetch={false}
+              className="flex items-center gap-3"
+              onClick={closeMenus}>
               <Image
                 src="/logo.webp"
                 alt="Logo Shibghatallah Al-Islamy"
@@ -265,7 +270,7 @@ export default function Navbar() {
 
           <div className="hidden items-center space-x-4 lg:flex">
             <div className="transition-transform duration-200 hover:scale-105">
-              <Link href="/" className={navLinkClass}>
+              <Link href="/" prefetch={false} className={navLinkClass}>
                 Beranda
               </Link>
             </div>
@@ -288,7 +293,7 @@ export default function Navbar() {
             />
 
             <div className="transition-transform duration-200 hover:scale-105">
-              <Link href="/berita" className={navLinkClass}>
+              <Link href="/berita" prefetch={false} className={navLinkClass}>
                 Berita
               </Link>
             </div>
@@ -303,7 +308,7 @@ export default function Navbar() {
             />
 
             <div className="transition-transform duration-200 hover:scale-105">
-              <Link href="/kontak" className={navLinkClass}>
+              <Link href="/kontak" prefetch={false} className={navLinkClass}>
                 Kontak
               </Link>
             </div>
@@ -346,6 +351,7 @@ export default function Navbar() {
             <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
               <Link
                 href="/"
+                prefetch={false}
                 className="block px-3 py-2 text-base font-bold text-white transition hover:text-emerald-400"
                 onClick={closeMenus}>
                 Beranda
@@ -368,6 +374,7 @@ export default function Navbar() {
               />
               <Link
                 href="/berita"
+                prefetch={false}
                 className="block px-3 py-2 text-base font-bold text-white transition hover:text-emerald-400"
                 onClick={closeMenus}>
                 Berita
@@ -382,6 +389,7 @@ export default function Navbar() {
               />
               <Link
                 href="/kontak"
+                prefetch={false}
                 className="block px-3 py-2 text-base font-bold text-white transition hover:text-emerald-400"
                 onClick={closeMenus}>
                 Kontak

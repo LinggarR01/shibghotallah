@@ -36,6 +36,8 @@ const socialItems = [
   },
 ].filter((item) => Boolean(item.href));
 
+const isInternalHref = (href: string) => href.startsWith('/');
+
 export default function Footer() {
   return (
     <footer className="bg-hijau text-white pt-16 pb-8 font-quicksand">
@@ -81,6 +83,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    prefetch={false}
                     className="text-emerald-100 hover:text-white hover:underline transition-all duration-300">
                     {link.name}
                   </Link>
@@ -97,11 +100,22 @@ export default function Footer() {
             <ul className="space-y-3">
               {LINKS.info.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-emerald-100 hover:text-white hover:underline transition-all duration-300">
-                    {link.name}
-                  </Link>
+                  {isInternalHref(link.href) ? (
+                    <Link
+                      href={link.href}
+                      prefetch={false}
+                      className="text-emerald-100 hover:text-white hover:underline transition-all duration-300">
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-100 hover:text-white hover:underline transition-all duration-300">
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

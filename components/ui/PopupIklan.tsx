@@ -35,6 +35,7 @@ export default function PopupIklan() {
 
         <Link
           href="/pendaftaran/informasi-pendaftaran"
+          prefetch={false}
           className="relative block aspect-[4/5] w-full">
           <Image
             src="/poster-pendaftaran.webp"

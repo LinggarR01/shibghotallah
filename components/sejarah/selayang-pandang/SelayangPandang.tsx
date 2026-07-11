@@ -43,11 +43,13 @@ export default function SelayangPandang() {
           <div className="animate-fade-in-up mt-12 flex items-center justify-between border-t border-gray-200 pt-6">
             <Link
               href="/sejarah/latar-belakang"
+              prefetch={false}
               className="link-hover-scale text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
               ← Latar Belakang
             </Link>
             <Link
               href="/sejarah/sintesa"
+              prefetch={false}
               className="link-hover-scale text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
               Sintesa →
             </Link>

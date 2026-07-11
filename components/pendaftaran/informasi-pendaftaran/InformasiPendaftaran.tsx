@@ -36,6 +36,7 @@ export default function InformasiPendaftaran() {
 
               <Link
                 href="/"
+                prefetch={false}
                 className="inline-flex items-center justify-center rounded-full border border-emerald-700 px-7 py-3 text-sm font-bold text-emerald-700 transition duration-300 hover:-translate-y-1 hover:bg-emerald-50">
                 Kembali ke Beranda
               </Link>

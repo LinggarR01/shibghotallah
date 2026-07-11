@@ -55,12 +55,14 @@ export default function HomeClient({ articles }: HomeClientProps) {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center px-4">
             <Link
               href="/pendaftaran/informasi-pendaftaran"
+              prefetch={false}
               className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-emerald-950 px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:-translate-y-1 block text-center">
               Daftar Sekarang
             </Link>
 
             <Link
               href="/sejarah/latar-belakang"
+              prefetch={false}
               className="w-full sm:w-auto bg-white/10 backdrop-blur-md border border-white/30 text-white hover:bg-white hover:text-emerald-900 px-8 py-4 rounded-full font-bold transition-all duration-300 hover:-translate-y-1 block text-center">
               Jelajahi Profil Pondok
             </Link>
@@ -159,6 +161,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
 
               <Link
                 href="/sejarah/latar-belakang"
+                prefetch={false}
                 className="text-emerald-700 font-bold hover:text-emerald-500 transition-colors inline-flex items-center group text-sm md:text-base">
                 Kenali Sejarah Kami Lebih Dalam
                 <svg

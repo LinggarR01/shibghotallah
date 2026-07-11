@@ -50,12 +50,14 @@ export default function PancaJangka() {
           <div className="animate-fade-in-up mt-12 flex items-center justify-between border-t border-gray-200 pt-6">
             <Link
               href="/tentang/falsafah/moto"
+              prefetch={false}
               className="link-hover-scale text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
               ← Moto
             </Link>
 
             <Link
               href="/tentang/falsafah/panca-jiwa"
+              prefetch={false}
               className="link-hover-scale text-sm md:text-base font-semibold text-emerald-700 transition hover:text-emerald-900">
               Panca Jiwa →
             </Link>
